@@ -10,7 +10,7 @@ import "../../../Styles/AdminStyles/ToastStyles.css"
 import TipoServicioForm from "../../../Components/AdminComponents/TiposDeServicioComponents/TipoServicioForm"
 import LoadingOverlay from "../../../Components/AdminComponents/LoadingOverlay"
 import ConfirmDialog from "../../../Components/AdminComponents/ConfirmDialog"
-import tiposServicioService from "../../../services/ConsumoAdmin/tiposServicioService.js"
+import tiposServicioService from "../../../Services/ConsumoAdmin/tiposServicioService"
 
 // Importar los estilos SCSS
 import "../../../Components/AdminComponents/TiposDeServicioComponents/TipoServicioForm.scss"
