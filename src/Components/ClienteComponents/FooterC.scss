@@ -1,0 +1,250 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+// Colores de redes sociales
+$facebook-color: #1877f2;
+$instagram-color: #e1306c;
+$tiktok-color: #000000;
+$whatsapp-color: #25d366;
+
+.footer {
+  background-color: $teocat-brown;
+  color: white;
+  padding: 4rem 0 2rem;
+  position: relative;
+  z-index: 10;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, $teocat-green, $teocat-blue);
+    z-index: 1;
+  }
+
+  .footer-logo {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .footer-heading {
+    color: $teocat-green;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: $teocat-green;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::after {
+      width: 60px;
+    }
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 0.75rem;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: translateX(5px);
+      }
+      
+      a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: inline-block;
+        
+        &:hover {
+          color: $teocat-green;
+        }
+      }
+    }
+  }
+
+  .footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      
+      i {
+        color: $teocat-green;
+        margin-top: 0.25rem;
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover i {
+        transform: scale(1.2);
+      }
+    }
+    
+    .footer-contact-link {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $teocat-green;
+      }
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    
+    .social-icon {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      &.facebook:hover {
+        color: $facebook-color;
+        background-color: white;
+      }
+      
+      &.instagram:hover {
+        color: white;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      }
+      
+      &.tiktok:hover {
+        color: white;
+        background: linear-gradient(90deg, #25F4EE, #FE2C55, #000000);
+        position: relative;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          right: 2px;
+          bottom: 2px;
+          background-color: $tiktok-color;
+          border-radius: 50%;
+          z-index: -1;
+        }
+      }
+      
+      &.whatsapp:hover {
+        color: white;
+        background-color: $whatsapp-color;
+      }
+    }
+  }
+
+  .footer-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+  }
+
+  .footer-bottom-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    
+    li {
+      a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: $teocat-green;
+        }
+      }
+    }
+  }
+  
+  .signature {
+    .signature-text {
+      font-family: 'Pacifico', cursive, 'Dancing Script', cursive, 'Great Vibes', cursive;
+      font-size: 1.2rem;
+      color: $teocat-green;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.5px;
+      display: inline-block;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, $teocat-green, transparent);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 767.98px) {
+  .footer {
+    .social-icons {
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-bottom-links {
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .signature {
+      margin-top: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+// Importar fuentes para la firma
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Pacifico&display=swap');
+

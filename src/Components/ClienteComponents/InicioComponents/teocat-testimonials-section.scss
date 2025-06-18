@@ -1,0 +1,276 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.teocat-testimonials {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1603189343302-e603f7add05a?q=80&w=1920');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 6rem 0;
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // EPM-inspired gradient overlay
+    background: linear-gradient(135deg, 
+      rgba($teocat-brown, 0.85) 0%, 
+      rgba($teocat-brown, 0.75) 100%
+    );
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  &__header {
+    margin-bottom: 3rem;
+  }
+  
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  // EPM-inspired accent line
+  &__accent-line {
+    width: 80px;
+    height: 4px;
+    background-color: white;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  
+  &__title {
+    color: white;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__subtitle {
+    color: rgba(white, 0.8);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  &__carousel {
+    position: relative;
+    
+    // EPM-inspired decorative elements
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    &::before {
+      background: radial-gradient(circle, rgba(white, 0.1) 0%, rgba(white, 0) 70%);
+      top: -50px;
+      left: -100px;
+    }
+    
+    &::after {
+      background: radial-gradient(circle, rgba(white, 0.1) 0%, rgba(white, 0) 70%);
+      bottom: -50px;
+      right: -100px;
+    }
+  }
+  
+  &__swiper {
+    padding: 20px 0 60px;
+    
+    // EPM-inspired pagination
+    .swiper-pagination {
+      bottom: 0;
+      
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        
+        &-active {
+          background-color: $teocat-green;
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  
+  &__slide {
+    width: 500px;
+    max-width: 90%;
+    
+    @media (max-width: 767.98px) {
+      width: 100%;
+    }
+  }
+  
+  // EPM-inspired card design
+  &__card {
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    // EPM-inspired card accent
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, $teocat-green, $teocat-blue);
+    }
+  }
+  
+  &__content {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  &__quote {
+    font-size: 2rem;
+    color: $teocat-green;
+    margin-bottom: 1rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__text {
+    color: $teocat-brown;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
+    
+    &::before, &::after {
+      content: '"';
+      font-size: 1.5rem;
+      color: rgba($teocat-green, 0.2);
+    }
+  }
+  
+  &__rating {
+    margin-bottom: 1rem;
+    
+    i {
+      color: #FFD700;
+      font-size: 1.25rem;
+      margin: 0 2px;
+    }
+  }
+  
+  &__user {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba($teocat-brown, 0.1);
+    padding-top: 1.5rem;
+  }
+  
+  // EPM-inspired avatar styling
+  &__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+    border: 3px solid $teocat-green;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  &__user-info {
+    text-align: left;
+    
+    h4 {
+      color: $teocat-brown;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    p {
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .teocat-testimonials {
+    &__title {
+      font-size: 2rem;
+    }
+    
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .teocat-testimonials {
+    padding: 4rem 0;
+    background-attachment: scroll;
+    
+    &__title {
+      font-size: 1.75rem;
+    }
+    
+    &__card {
+      padding: 1.5rem;
+    }
+    
+    &__text {
+      font-size: 1rem;
+    }
+  }
+}

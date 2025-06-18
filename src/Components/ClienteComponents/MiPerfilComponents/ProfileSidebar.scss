@@ -1,0 +1,118 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-profile-sidebar {
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  .tc-profile-header {
+    background: linear-gradient(to right, rgba($teocat-green, 0.1), rgba($teocat-blue, 0.1));
+    border-bottom: 1px solid rgba($teocat-green, 0.1);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    
+    .tc-profile-image-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 4px solid white;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      
+      .tc-profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .tc-profile-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+        
+        i {
+          color: white;
+          font-size: 1.5rem;
+        }
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+      
+      &:hover .tc-profile-image {
+        transform: scale(1.05);
+      }
+    }
+    
+    .tc-profile-name {
+      color: $teocat-brown;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      font-size: 1.25rem;
+    }
+    
+    .tc-profile-email {
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+  }
+  
+  .tc-profile-nav {
+    .nav-link {
+      color: $teocat-brown;
+      padding: 0.75rem 1.25rem;
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      
+      &:hover {
+        background-color: rgba($teocat-green, 0.05);
+        color: $teocat-green;
+      }
+      
+      &.active {
+        background-color: rgba($teocat-green, 0.1);
+        color: $teocat-green;
+        font-weight: 600;
+        border-left-color: $teocat-green;
+      }
+      
+      .tc-nav-icon {
+        margin-right: 0.75rem;
+        width: 20px;
+        text-align: center;
+        font-size: 1rem;
+      }
+      
+      &.text-danger {
+        &:hover {
+          background-color: rgba(#dc3545, 0.1);
+          color: #dc3545;
+        }
+      }
+    }
+  }
+}

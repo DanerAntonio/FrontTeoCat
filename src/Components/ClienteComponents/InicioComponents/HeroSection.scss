@@ -1,0 +1,248 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.hero-section {
+position: relative;
+margin-top: 70px; // Ajustado para el navbar
+height: calc(100vh - 70px);
+max-height: 800px;
+min-height: 600px;
+
+.hero-swiper {
+  height: 100%;
+  
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    
+    &-active {
+      background-color: $teocat-green;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    background-color: rgba($teocat-green, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    
+    &::after {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    &:hover {
+      background-color: $teocat-green;
+    }
+  }
+}
+
+.hero-slide {
+  position: relative;
+  height: 100%;
+  
+  .hero-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+  }
+  
+  .swiper-slide-active .hero-image {
+    transform: scale(1.1);
+  }
+  
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    text-align: left;
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    padding: 2rem 0;
+  }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+  max-width: 700px;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.hero-button {
+  background-color: $teocat-green;
+  border-color: $teocat-green;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover, &:focus {
+    background-color: color.adjust($teocat-green, $lightness: -10%);
+    border-color: color.adjust($teocat-green, $lightness: -10%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+// Indicador de desplazamiento
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  
+  .mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+    
+    .wheel {
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scroll 2s infinite;
+    }
+  }
+  
+  .arrow-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    
+    span {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: rotate(45deg);
+      animation: arrow 2s infinite;
+      margin: -3px 0;
+      
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    }
+  }
+}
+}
+
+// Animaciones
+@keyframes scroll {
+0% {
+  opacity: 1;
+  top: 10px;
+}
+100% {
+  opacity: 0;
+  top: 30px;
+}
+}
+
+@keyframes arrow {
+0% {
+  opacity: 0;
+  transform: rotate(45deg) translate(-10px, -10px);
+}
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  transform: rotate(45deg) translate(10px, 10px);
+}
+}
+
+// Responsive
+@media (max-width: 991.98px) {
+.hero-section {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+}
+}
+
+@media (max-width: 767.98px) {
+.hero-section {
+  margin-top: 56px; // Ajustado para el navbar en móvil
+  height: calc(100vh - 56px);
+  min-height: 500px;
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .hero-button {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+}
+}
+
+@media (max-width: 575.98px) {
+.hero-section {
+  min-height: 450px;
+  
+  .hero-title {
+    font-size: 1.75rem;
+  }
+}
+}
+

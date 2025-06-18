@@ -1,0 +1,84 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-order-item {
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  }
+  
+  .accordion-button {
+    background-color: #f9f9f9;
+    padding: 1.25rem;
+    
+    &:not(.collapsed) {
+      background-color: rgba($teocat-green, 0.1);
+      color: $teocat-brown;
+      box-shadow: none;
+    }
+    
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  
+  .tc-order-id, .tc-order-date, .tc-order-total {
+    font-size: 0.95rem;
+  }
+  
+  .tc-order-status {
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+// Tabla de pedidos
+.tc-order-items-table {
+  th {
+    background-color: #f9f9f9;
+    color: $teocat-brown;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+  }
+  
+  td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+  
+  tfoot {
+    background-color: #f9f9f9;
+    
+    td {
+      padding: 0.75rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tc-order-items-table {
+    font-size: 0.875rem;
+  }
+}
+
+.tc-profile-card-header {
+  background: linear-gradient(to right, rgba($teocat-green, 0.05), rgba($teocat-blue, 0.05));
+  border-bottom: 1px solid rgba($teocat-green, 0.1);
+  padding: 1.25rem 1.5rem;
+  
+  h4 {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 1.35rem;
+  }
+}

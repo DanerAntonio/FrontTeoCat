@@ -1,0 +1,112 @@
+// Variables con los colores corporativos
+$primary-color: #00b8e0; // Azul turquesa neón suavizado
+$primary-dark: darken($primary-color, 10%); // Versión más oscura para hover
+$primary-light: lighten($primary-color, 35%); // Versión más clara para acentos
+$text-on-primary: #ffffff; // Texto blanco sobre el color primario
+
+$secondary-color: #8fd82a; // Verde lima neón suavizado
+$accent-color: #f5a623; // Naranja/ámbar neón suavizado
+$dark-color: #4a3631; // Marrón oscuro suavizado
+$white-color: #FFFFFF; // Blanco
+$light-bg: #f8fcff; // Fondo claro derivado del azul
+$hover-color: rgba($primary-color, 0.08);
+$border-color: #edf2f7;
+$text-color: #3a3a3a;
+$text-muted: #718096;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Estilos para el resumen de devolución
+.resumen-devolucion {
+  margin-bottom: $spacing-lg;
+  
+  .card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    
+    .card-header {
+      background: linear-gradient(-45deg, $primary-color, $secondary-color, $accent-color, $primary-color);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+      color: $text-on-primary;
+      border-bottom: 0;
+      padding: $spacing-md;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      
+      h5 {
+        font-weight: $font-weight-bold;
+        margin: 0;
+        letter-spacing: 0.5px;
+      }
+    }
+    
+    .card-body {
+      padding: $spacing-lg;
+      background-color: $white-color;
+      
+      .d-flex {
+        display: flex !important;
+      }
+      
+      .justify-content-between {
+        justify-content: space-between !important;
+      }
+      
+      .align-items-center {
+        align-items: center !important;
+      }
+      
+      h4 {
+        margin: 0;
+        font-weight: $font-weight-medium;
+        font-size: 1.25rem;
+        
+        &.monto-total {
+          color: $primary-color;
+          font-weight: $font-weight-bold;
+          font-size: 1.5rem;
+          text-shadow: 0 0 1px rgba($primary-color, 0.2);
+          
+          // Efecto de brillo sutil
+          animation: pulse 2s infinite;
+        }
+      }
+    }
+  }
+}
+
+// Animación del gradiente
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Animación de pulso para el monto total
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 1px rgba($primary-color, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba($primary-color, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 1px rgba($primary-color, 0.2);
+  }
+}

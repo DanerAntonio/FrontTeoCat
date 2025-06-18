@@ -1,0 +1,177 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+// Estilos para el encabezado de la tarjeta
+.tc-profile-card-header {
+  background: linear-gradient(to right, rgba($teocat-green, 0.05), rgba($teocat-blue, 0.05));
+  border-bottom: 1px solid rgba($teocat-green, 0.1);
+  padding: 1rem 1.25rem;
+  
+  h4 {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+}
+
+// Estilos para la vista de cuadrícula
+.tc-review-card {
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .tc-review-type-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .tc-review-item-name {
+    color: $teocat-brown;
+    font-weight: 600;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  
+  .tc-review-rating {
+    font-size: 0.9rem;
+    
+    i {
+      margin-right: 2px;
+    }
+  }
+  
+  .tc-review-content {
+    color: #495057;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-height: 5rem;
+    overflow: hidden;
+  }
+  
+  .tc-review-date {
+    font-size: 0.8rem;
+  }
+  
+  .tc-review-actions {
+    .btn {
+      padding: 0.25rem 0.4rem;
+      
+      i {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  .tc-review-image-container {
+    height: 120px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    
+    .tc-review-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// Estilos para la vista de lista
+.tc-reviews-list {
+  .tc-review-list-item {
+    border: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .tc-review-list-image-container {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    
+    .tc-review-list-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .tc-review-list-badge {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.2rem 0.4rem;
+    }
+  }
+  
+  .tc-review-item-name {
+    font-size: 0.95rem;
+  }
+  
+  .tc-review-rating {
+    font-size: 0.85rem;
+    
+    i {
+      margin-right: 2px;
+    }
+  }
+  
+  .tc-review-content {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    max-height: 2.6rem;
+    overflow: hidden;
+  }
+  
+  .tc-review-date {
+    font-size: 0.75rem;
+  }
+}
+
+// Estilos responsivos
+@media (max-width: 767.98px) {
+  .tc-review-card {
+    .tc-review-content {
+      max-height: 4rem;
+    }
+  }
+  
+  .tc-reviews-list {
+    .tc-review-list-image-container {
+      height: 70px;
+    }
+    
+    .tc-review-actions {
+      .btn {
+        padding: 0.2rem 0.35rem;
+        
+        i {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}

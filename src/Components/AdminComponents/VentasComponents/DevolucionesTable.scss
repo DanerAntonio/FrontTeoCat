@@ -1,0 +1,262 @@
+// Variables con los colores corporativos
+$primary-color: #00b8e0; // Azul turquesa neón suavizado
+$primary-dark: darken($primary-color, 10%); // Versión más oscura para hover
+$primary-light: lighten($primary-color, 35%); // Versión más clara para acentos
+$text-on-primary: #ffffff; // Texto blanco sobre el color primario
+
+$secondary-color: #8fd82a; // Verde lima neón suavizado
+$accent-color: #f5a623; // Naranja/ámbar neón suavizado
+$dark-color: #4a3631; // Marrón oscuro suavizado
+$white-color: #FFFFFF; // Blanco
+$light-bg: #f8fcff; // Fondo claro derivado del azul
+$hover-color: rgba($primary-color, 0.08);
+$border-color: #edf2f7;
+$text-color: #3a3a3a;
+$text-muted: #718096;
+
+$danger-color: #dc3545;
+$success-color: #198754;
+$warning-color: #ffc107;
+$info-color: #0dcaf0;
+$light-color: #f8f9fa;
+
+$input-border-color: #ced4da;
+$input-focus-border-color: lighten($primary-color, 15%);
+$input-focus-box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+$input-padding: 0.75rem 1rem;
+$input-border-radius: 0.375rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Mixins
+@mixin form-control-focus {
+  &:focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+    outline: 0;
+  }
+}
+
+@mixin form-control-invalid {
+  &.is-invalid {
+    border-color: $danger-color;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+    }
+  }
+}
+
+// Estilos para la tabla de detalles de productos
+.detalles-productos-container {
+  margin-bottom: $spacing-lg;
+  
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: $input-border-radius;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    
+    .table {
+      width: 100%;
+      margin-bottom: 0;
+      color: $text-color;
+      vertical-align: middle;
+      border-color: $border-color;
+      
+      thead {
+        th {
+          background: linear-gradient(to right, $primary-color, $secondary-color);
+          color: $text-on-primary;
+          font-weight: $font-weight-bold;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          letter-spacing: 0.5px;
+          padding: $spacing-md;
+          border-bottom: none;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          white-space: nowrap;
+          
+          &:first-child {
+            border-top-left-radius: $input-border-radius;
+          }
+          
+          &:last-child {
+            border-top-right-radius: $input-border-radius;
+          }
+        }
+      }
+      
+      tbody {
+        tr {
+          transition: all 0.2s ease;
+          
+          &:hover {
+            background-color: $hover-color;
+          }
+          
+          &.table-primary {
+            background-color: rgba($primary-color, 0.15);
+            
+            &:hover {
+              background-color: rgba($primary-color, 0.25);
+            }
+            
+            td {
+              border-bottom-color: rgba($primary-color, 0.2);
+            }
+          }
+          
+          td {
+            padding: $spacing-md;
+            border-bottom: 1px solid $border-color;
+            vertical-align: middle;
+            
+            // Estilos para el checkbox
+            .form-check {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0;
+              
+              .form-check-input {
+                width: 1.2rem;
+                height: 1.2rem;
+                margin-top: 0;
+                cursor: pointer;
+                border: 1px solid $input-border-color;
+                
+                &:checked {
+                  background-color: $primary-color;
+                  border-color: $primary-color;
+                }
+                
+                &:focus {
+                  border-color: $input-focus-border-color;
+                  box-shadow: $input-focus-box-shadow;
+                }
+              }
+            }
+            
+            // Estilos para el input numérico
+            .form-control {
+              display: block;
+              width: 100%;
+              padding: $spacing-sm $spacing-md;
+              font-size: 0.9rem;
+              font-weight: $font-weight-normal;
+              line-height: 1.5;
+              color: $text-color;
+              background-color: #fff;
+              background-clip: padding-box;
+              border: 1px solid $input-border-color;
+              border-radius: $input-border-radius;
+              transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+              
+              @include form-control-focus;
+              
+              &:disabled {
+                background-color: #e9ecef;
+                opacity: 0.7;
+                cursor: not-allowed;
+              }
+              
+              // Estilos específicos para input type number
+              &[type="number"] {
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
+                
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+              }
+              
+              &.form-control-sm {
+                padding: $spacing-xs $spacing-sm;
+                font-size: 0.875rem;
+                border-radius: $input-border-radius * 0.75;
+              }
+            }
+          }
+        }
+      }
+      
+      // Estilos para tabla con rayas
+      &.table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: rgba($light-bg, 0.5);
+        
+        &:hover {
+          background-color: $hover-color;
+        }
+        
+        &.table-primary {
+          background-color: rgba($primary-color, 0.15);
+          
+          &:hover {
+            background-color: rgba($primary-color, 0.25);
+          }
+        }
+      }
+      
+      // Estilos para tabla con hover
+      &.table-hover > tbody > tr:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+  
+  // Estilos para el precio y subtotal
+  .precio-unitario,
+  .subtotal {
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+  }
+  
+  .subtotal {
+    color: $primary-dark;
+  }
+}
+
+// Estilos para alertas
+.alert {
+  position: relative;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border: 1px solid transparent;
+  border-radius: $input-border-radius;
+  
+  &.alert-warning {
+    color: darken($warning-color, 30%);
+    background-color: lighten($warning-color, 40%);
+    border-color: lighten($warning-color, 30%);
+  }
+}
+
+// Animación para cambios en la tabla
+@keyframes highlight {
+  0% {
+    background-color: rgba($accent-color, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.highlight-row {
+  animation: highlight 1.5s ease-out;
+}

@@ -1,0 +1,243 @@
+/* Contenedor principal */
+.dashboard-container {
+    height: calc(100vh - 120px);
+    max-height: 600px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Fila de encabezado */
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .filter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .filter-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+  }
+  
+  .form-select {
+    border: 1px solid rgba(111, 66, 193, 0.2);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    min-width: 120px;
+  }
+  
+  /* Título del gráfico */
+  .chart-title {
+    text-align: center;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }
+  
+  /* Contenedor principal */
+  .main-container {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+    min-height: 0;
+  }
+  
+  /* Gráfico de barras */
+  .chart-container {
+    flex: 3;
+    display: flex;
+    position: relative;
+  }
+  
+  .y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #6c757d;
+    width: 2.5rem;
+    text-align: right;
+    padding-right: 0.25rem;
+  }
+  
+  .bars-container {
+    flex: 1;
+    display: flex;
+    gap: 0.25rem;
+    align-items: flex-start; /* Para que las barras crezcan hacia abajo */
+  }
+  
+  .bar-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .bar-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Para que las barras comiencen desde arriba */
+  }
+  
+  .bar {
+    width: 90%;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #6f42c1 0%, #6610f2 100%);
+    border-radius: 0 0 4px 4px; /* Redondeado en la parte inferior */
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 10px;
+  }
+  
+  .bar.inverted {
+    align-self: flex-start;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(0deg, #6f42c1 0%, #6610f2 100%); /* Gradiente invertido */
+  }
+  
+  .bar:hover {
+    width: 100%;
+    box-shadow: 0 0 15px rgba(111, 66, 193, 0.3);
+  }
+  
+  .bar-value {
+    position: absolute;
+    bottom: -18px; /* Ahora aparece debajo de la barra */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6f42c1;
+    color: white;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .bar:hover .bar-value {
+    opacity: 1;
+    bottom: -22px;
+  }
+  
+  .bar-label {
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    color: #6c757d;
+  }
+  
+  /* Gráficos circulares */
+  .pie-charts {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .pie-chart-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pie-title {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .pie-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .pie {
+    flex: 0 0 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pie-legend {
+    flex: 1;
+    font-size: 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .legend-color {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+  
+  .legend-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .legend-value {
+    font-weight: bold;
+  }
+  
+  /* Animaciones y efectos */
+  .bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  .bar:hover::after {
+    transform: translateX(100%);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
+    
+    .chart-container {
+      height: 200px;
+    }
+    
+    .pie-charts {
+      flex-direction: row;
+    }
+  }

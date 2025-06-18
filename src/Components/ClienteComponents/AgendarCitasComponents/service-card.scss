@@ -1,0 +1,113 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.service-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  &.selected {
+    border-color: $teocat-green !important;
+    box-shadow: 0 0.5rem 1rem rgba($teocat-green, 0.15) !important;
+  }
+  
+  .service-card-img-container {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    
+    .service-card-img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-selected-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $teocat-green;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  &:hover .service-card-img {
+    transform: scale(1.1);
+  }
+  
+  .service-card-title {
+    color: $teocat-brown;
+    font-weight: 600;
+  }
+  
+  .service-card-description {
+    color: #6c757d;
+    font-size: 0.875rem;
+    height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .service-card-price {
+    font-weight: 700;
+    color: $teocat-green;
+  }
+  
+  .service-card-duration {
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+  
+  .service-card-btn {
+    background-color: $teocat-green;
+    border-color: $teocat-green;
+    
+    &:hover, &:focus {
+      background-color: color.adjust($teocat-green, $lightness: -10%);
+      border-color: color.adjust($teocat-green, $lightness: -10%);
+    }
+    
+    &.btn-outline-success {
+      color: $teocat-green;
+      background-color: transparent;
+      
+      &:hover, &:focus {
+        color: white;
+        background-color: $teocat-green;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .service-card {
+    .service-card-img-container {
+      height: 120px;
+    }
+    
+    .service-card-description {
+      height: auto;
+      max-height: 60px;
+    }
+  }
+}
+

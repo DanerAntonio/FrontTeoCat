@@ -1,0 +1,171 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.testimonials-section {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1603189343302-e603f7add05a?q=80&w=1920');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 6rem 0;
+  
+  .testimonials-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($teocat-brown, 0.8);
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .section-title {
+    color: white;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      background-color: white;
+    }
+  }
+  
+  .section-subtitle {
+    color: rgba(white, 0.8);
+  }
+  
+  .testimonials-swiper {
+    padding: 20px 0 60px;
+    
+    .swiper-pagination {
+      bottom: 0;
+      
+      .swiper-pagination-bullet {
+        background-color: white;
+        opacity: 0.7;
+        
+        &-active {
+          background-color: $teocat-green;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+  .testimonial-slide {
+    width: 500px;
+    max-width: 90%;
+    
+    @media (max-width: 767.98px) {
+      width: 100%;
+    }
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    .testimonial-content {
+      flex: 1;
+      margin-bottom: 1.5rem;
+      
+      .testimonial-quote {
+        font-size: 2rem;
+        color: $teocat-green;
+        margin-bottom: 1rem;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .testimonial-text {
+        color: $teocat-brown;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        position: relative;
+        
+        &::before, &::after {
+          content: '"';
+          font-size: 1.5rem;
+          color: rgba($teocat-green, 0.2);
+        }
+      }
+      
+      .testimonial-rating {
+        margin-bottom: 1rem;
+        
+        i {
+          color: #FFD700;
+          font-size: 1.25rem;
+          margin: 0 2px;
+        }
+      }
+    }
+    
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba($teocat-brown, 0.1);
+      padding-top: 1.5rem;
+      
+      .user-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+        border: 3px solid $teocat-green;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      .user-info {
+        text-align: left;
+        
+        h4 {
+          color: $teocat-brown;
+          font-weight: 600;
+          font-size: 1.1rem;
+          margin-bottom: 0.25rem;
+        }
+        
+        p {
+          color: #6c757d;
+          font-size: 0.9rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .testimonials-section {
+    padding: 4rem 0;
+    background-attachment: scroll;
+  }
+}
+

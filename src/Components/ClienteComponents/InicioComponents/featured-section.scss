@@ -1,0 +1,106 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.featured-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  padding: 5rem 0;
+  
+  .view-all-btn {
+    border-color: $teocat-green;
+    color: $teocat-green;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $teocat-green;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba($teocat-green, 0.3);
+    }
+  }
+  
+  .view-toggle-buttons {
+    .btn {
+      padding: 0.35rem 0.5rem;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+      }
+      
+      &.btn-success {
+        background-color: $teocat-green;
+        border-color: $teocat-green;
+      }
+      
+      &.btn-outline-success {
+        border-color: $teocat-green;
+        color: $teocat-green;
+        
+        &:hover {
+          background-color: $teocat-green;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  .item-card-wrapper {
+    height: 100%;
+  }
+  
+  .featured-swiper {
+    padding-bottom: 50px;
+    padding-top: 20px;
+    
+    .swiper-pagination {
+      bottom: 0;
+      
+      .swiper-pagination-bullet {
+        background-color: $teocat-brown;
+        opacity: 0.5;
+        
+        &-active {
+          opacity: 1;
+          background-color: $teocat-green;
+        }
+      }
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background-color: rgba($teocat-green, 0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      
+      &::after {
+        font-size: 1.25rem;
+      }
+      
+      &:hover {
+        background-color: $teocat-green;
+      }
+    }
+    
+    .swiper-slide {
+      transition: transform 0.3s ease;
+      
+      &-active {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .featured-section {
+    padding: 3rem 0;
+  }
+}
+

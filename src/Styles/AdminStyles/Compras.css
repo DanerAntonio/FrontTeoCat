@@ -1,0 +1,145 @@
+/* Estilos para el contenedor principal */
+.compras-container {
+  padding: 1rem 0;
+}
+
+/* Estilos para la tabla */
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+/* Estilos para los badges de estado */
+.badge {
+  font-size: 0.85rem;
+  padding: 0.35em 0.65em;
+  font-weight: 500;
+}
+
+/* Estilos para el modal */
+.modal-header {
+  padding: 1rem;
+}
+
+.modal-header .btn-close-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Estilos para el formulario de compra */
+.compra-form label {
+  font-weight: 500;
+}
+
+.compra-form .form-control:focus,
+.compra-form .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilos para los campos requeridos */
+.compra-form .text-danger {
+  font-weight: bold;
+}
+
+/* Estilos para el dropdown de resultados */
+.dropdown-results {
+  position: absolute;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* Estilos para el producto seleccionado */
+.producto-seleccionado {
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  border: 1px solid #dee2e6;
+  font-size: 0.9rem;
+}
+
+/* Estilos para el botón de guardar */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Estilos para el botón de cancelar */
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5c636a;
+  border-color: #565e64;
+}
+
+/* Estilos para el botón de eliminar */
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  border-color: #b02a37;
+}
+
+/* Estilos para el botón de agregar */
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+  border-color: #146c43;
+}
+
+/* Estilos para el modal de confirmación */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+/* Estilos para el modal en dispositivos móviles */
+@media (max-width: 767.98px) {
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .row > div {
+    margin-bottom: 1rem;
+  }
+
+  .row > div:last-child {
+    margin-bottom: 0;
+  }
+}
+

@@ -1,0 +1,293 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.custom-navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 70px; // Altura fija para el navbar
+  padding: 0;
+  
+  /* Modificar la sección del logo para eliminar cualquier animación existente y aplicar solo el efecto de escala */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    
+    .logo-image {
+      height: 65px; // Reducir el tamaño del logo
+      width: auto;
+      animation: none !important; /* Desactivar cualquier animación existente */
+      transform: none !important; /* Resetear cualquier transformación existente */
+      transition: transform 0.3s ease; /* Solo aplicar transición para el efecto hover */
+      
+      &:hover {
+        transform: scale(1.05) !important; /* Forzar solo el efecto de escala */
+        animation: none !important; /* Asegurar que no haya animación en hover */
+      }
+    }
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+  
+  .nav-link {
+    color: $teocat-brown;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem; // Reducir el padding horizontal
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap; // Evitar que el texto se rompa en varias líneas
+    
+    &:hover {
+      color: $teocat-green;
+    }
+    
+    &.active {
+      color: $teocat-green;
+      font-weight: 700;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0.75rem;
+        right: 0.75rem;
+        height: 3px;
+        background-color: $teocat-green;
+        border-radius: 3px;
+      }
+    }
+  }
+  
+  .sobre-nosotros-link {
+    white-space: nowrap; // Asegurar que "Sobre Nosotros" esté en una sola línea
+  }
+  
+  // Estilos para el icono de notificaciones
+  .notification-icon-container {
+    margin-right: 1.25rem; // Espacio entre notificaciones y carrito
+    
+    .notification-toggle {
+      color: $teocat-brown;
+      padding: 0;
+      background: transparent;
+      border: none;
+      position: relative;
+      
+      &::after {
+        display: none; // Ocultar la flecha del dropdown
+      }
+      
+      &:hover, &:focus {
+        color: $teocat-green;
+      }
+      
+      .badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.45rem;
+      }
+    }
+    
+    .notification-dropdown-menu {
+      width: 320px;
+      padding: 0;
+      
+      .notification-header {
+        background-color: rgba($teocat-green, 0.05);
+        
+        h6 {
+          color: $teocat-brown;
+          font-weight: 600;
+        }
+      }
+      
+      .notification-item {
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: flex-start;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+        
+        &:hover {
+          background-color: rgba($teocat-green, 0.05);
+        }
+        
+        .notification-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 1rem;
+          flex-shrink: 0;
+          
+          &.bg-success-light {
+            background-color: rgba($teocat-green, 0.1);
+          }
+          
+          &.bg-primary-light {
+            background-color: rgba($teocat-blue, 0.1);
+          }
+          
+          i {
+            font-size: 1.2rem;
+          }
+        }
+        
+        .notification-content {
+          flex: 1;
+          min-width: 0; // Importante para que el texto se ajuste
+          
+          p {
+            font-size: 0.9rem;
+            color: $teocat-brown;
+            margin-bottom: 0.25rem;
+            white-space: normal; // Permitir saltos de línea
+            word-wrap: break-word; // Romper palabras largas
+            overflow-wrap: break-word;
+          }
+          
+          small {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+  
+  // Estilos para el icono del carrito
+  .cart-icon-container {
+    margin-right: 1.25rem; // Espacio entre carrito e icono de usuario
+    
+    .cart-icon {
+      color: $teocat-brown;
+      transition: color 0.3s ease;
+      position: relative;
+      display: inline-block;
+      
+      &:hover {
+        color: $teocat-green;
+      }
+      
+      .badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.45rem;
+      }
+    }
+  }
+  
+  .user-dropdown {
+    background-color: $teocat-green;
+    border-color: $teocat-green;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    
+    &:hover, &:focus, &:active {
+      background-color: color.adjust($teocat-green, $lightness: -10%);
+      border-color: color.adjust($teocat-green, $lightness: -10%);
+    }
+    
+    &::after {
+      margin-left: 0.5rem; // Mostrar la flecha del dropdown
+    }
+    
+    i {
+      font-size: 1.2rem;
+    }
+    
+    .user-name {
+      margin-left: 0.5rem;
+      font-weight: 500;
+    }
+  }
+  
+  .user-dropdown-menu {
+    min-width: 250px;
+    padding: 0;
+    
+    .user-info {
+      background-color: rgba($teocat-green, 0.05);
+      
+      .user-avatar {
+        color: $teocat-green;
+      }
+    }
+    
+    .dropdown-item {
+      padding: 0.6rem 1rem;
+      
+      &:hover {
+        background-color: rgba($teocat-green, 0.05);
+      }
+      
+      &.text-danger:hover {
+        background-color: rgba(#dc3545, 0.05);
+      }
+    }
+  }
+  
+  .login-btn {
+    background-color: $teocat-green;
+    border-color: $teocat-green;
+    
+    &:hover, &:focus {
+      background-color: color.adjust($teocat-green, $lightness: -10%);
+      border-color: color.adjust($teocat-green, $lightness: -10%);
+    }
+  }
+}
+
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+// Responsive
+@media (max-width: 991.98px) {
+  .custom-navbar {
+    height: auto;
+    
+    .nav-link {
+      &.active::after {
+        left: 0;
+        right: 0;
+      }
+    }
+    
+    .notification-icon-container,
+    .cart-icon-container {
+      margin-right: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .user-dropdown {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/* Asegurarse de que no haya keyframes de animación para el logo */
+@keyframes logoAnimation {
+  0%, 100% {
+    transform: none;
+  }
+}
+

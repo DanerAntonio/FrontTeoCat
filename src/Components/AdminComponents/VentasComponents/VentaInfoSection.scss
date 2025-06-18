@@ -1,0 +1,151 @@
+// Variables con los colores corporativos
+$primary-color: #00b8e0; // Azul turquesa neón suavizado
+$primary-dark: darken($primary-color, 10%); // Versión más oscura para hover
+$primary-light: lighten($primary-color, 35%); // Versión más clara para acentos
+$text-on-primary: #ffffff; // Texto blanco sobre el color primario
+
+$secondary-color: #8fd82a; // Verde lima neón suavizado
+$accent-color: #f5a623; // Naranja/ámbar neón suavizado
+$dark-color: #4a3631; // Marrón oscuro suavizado
+$white-color: #FFFFFF; // Blanco
+$light-bg: #f8fcff; // Fondo claro derivado del azul
+$hover-color: rgba($primary-color, 0.08);
+$border-color: #edf2f7;
+$text-color: #3a3a3a;
+$text-muted: #718096;
+
+$input-border-color: #ced4da;
+$input-focus-border-color: lighten($primary-color, 15%);
+$input-focus-box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+$input-padding: 0.75rem 1rem;
+$input-border-radius: 0.375rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Mixins
+@mixin form-control-focus {
+  &:focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+    outline: 0;
+  }
+}
+
+// Estilos para la sección de información de venta
+.venta-info-section {
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background-color: $light-bg;
+  border-radius: $input-border-radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    
+    > div {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+      margin-bottom: $spacing-md;
+      
+      @media (max-width: 767.98px) {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  
+  // Estilos para etiquetas flotantes
+  .form-floating {
+    position: relative;
+    
+    > .form-control {
+      height: calc(3.5rem + 2px);
+      padding: 1rem 0.75rem;
+      background-color: $white-color;
+      border: 1px solid $input-border-color;
+      border-radius: $input-border-radius;
+      
+      &:focus {
+        @include form-control-focus;
+      }
+      
+      &:disabled,
+      &[readonly] {
+        background-color: $light-bg;
+        opacity: 1;
+        border-color: $border-color;
+        color: $text-color;
+        font-weight: $font-weight-medium;
+        
+        // Estilo especial para valores monetarios
+        &.valor-monetario {
+          color: $primary-dark;
+          font-weight: $font-weight-bold;
+        }
+        
+        // Estilo especial para fechas
+        &.fecha {
+          color: $dark-color;
+        }
+        
+        // Estilo especial para identificadores
+        &.identificador {
+          font-family: monospace;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+    
+    > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding: 1rem 0.75rem;
+      pointer-events: none;
+      border: 1px solid transparent;
+      transform-origin: 0 0;
+      transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+      color: $text-muted;
+    }
+    
+    > .form-control:focus ~ label,
+    > .form-control:not(:placeholder-shown) ~ label {
+      opacity: 0.65;
+      transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+      background-color: $white-color;
+      padding: 0 $spacing-xs;
+      height: auto;
+      color: $primary-color;
+    }
+    
+    > .form-control[readonly] ~ label {
+      opacity: 0.65;
+      transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+      background-color: $white-color;
+      padding: 0 $spacing-xs;
+      height: auto;
+      color: $text-muted;
+    }
+  }
+  
+  // Estilos para el título de la sección
+  .section-title {
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+    border-bottom: 2px solid $primary-light;
+  }
+}

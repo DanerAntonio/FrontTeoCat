@@ -1,0 +1,169 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.teocat-benefits {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  
+  &__header {
+    margin-bottom: 3rem;
+  }
+  
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  // EPM-inspired accent line
+  &__accent-line {
+    width: 80px;
+    height: 4px;
+    background-color: $teocat-green;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__title {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 2.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  &__card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    
+    // EPM-inspired card design
+    &-inner {
+      position: relative;
+      height: 100%;
+      padding: 1.5rem 1rem;
+      background-color: white;
+      transition: all 0.3s ease;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: $teocat-green;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease;
+      }
+    }
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+      
+      .teocat-benefits__card-inner::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+      
+      .teocat-benefits__icon {
+        background-color: $teocat-green;
+        color: white;
+        transform: rotate(360deg) scale(1.1);
+      }
+      
+      .teocat-benefits__hover-icon {
+        opacity: 0.05;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+  
+  &__icon-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  &__icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba($teocat-green, 0.1);
+    color: $teocat-green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 2;
+    
+    i {
+      font-size: 1.75rem;
+    }
+  }
+  
+  &__card-title {
+    color: $teocat-brown;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__card-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    height: 4.8rem;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  &__hover-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    font-size: 200px;
+    opacity: 0;
+    color: $teocat-green;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .teocat-benefits {
+    padding: 3rem 0;
+    
+    &__title {
+      font-size: 2rem;
+    }
+    
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+// Tabla de citas
+.tc-appointments-table {
+  th {
+    background-color: #f9f9f9;
+    color: $teocat-brown;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+  }
+  
+  td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+  
+  .tc-appointment-row {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: rgba($teocat-green, 0.05);
+    }
+  }
+  
+  .tc-appointment-status {
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tc-appointments-table {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,451 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-about-page {
+  // Estilos generales
+  section {
+    padding: 5rem 0;
+    
+    @media (max-width: 767.98px) {
+      padding: 3rem 0;
+    }
+  }
+  
+  .tc-section-header {
+    margin-bottom: 3rem;
+    
+    .tc-section-subtitle {
+      color: $teocat-green;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    
+    .tc-section-title {
+      color: $teocat-brown;
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      
+      @media (max-width: 767.98px) {
+        font-size: 2rem;
+      }
+    }
+    
+    .tc-section-description {
+      color: #6c757d;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    &.text-center {
+      .tc-section-title {
+        &::after {
+          content: '';
+          display: block;
+          width: 80px;
+          height: 4px;
+          background-color: $teocat-green;
+          margin: 1.5rem auto 0;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  
+  // Hero Section
+  .tc-hero-section {
+    position: relative;
+    height: 500px;
+    background-image: url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    margin-top: 70px; // Para compensar la navbar fija
+    
+    .tc-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba($teocat-brown, 0.9), rgba($teocat-brown, 0.7));
+    }
+    
+    .tc-hero-content {
+      position: relative;
+      color: white;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      
+      h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        
+        @media (max-width: 767.98px) {
+          font-size: 2.5rem;
+        }
+      }
+      
+      .lead {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        
+        @media (max-width: 767.98px) {
+          font-size: 1.2rem;
+        }
+      }
+      
+      .tc-hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        
+        .tc-hero-badge {
+          background-color: $teocat-green;
+          color: white;
+          font-size: 1rem;
+          padding: 0.5rem 1.5rem;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+  
+  // Historia Section
+  .tc-historia-section {
+    background-color: white;
+    
+    .tc-historia-content {
+      p {
+        color: #495057;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    .tc-historia-image-container {
+      position: relative;
+      padding: 2rem;
+      
+      .tc-historia-carousel {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        position: relative;
+        z-index: 2;
+        
+        .tc-historia-image {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+        }
+      }
+      
+      .tc-historia-image-accent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 4px solid $teocat-green;
+        border-radius: 1rem;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1;
+      }
+    }
+  }
+  
+  // Misión, Visión y Valores Section
+  .tc-mvv-section {
+    background-color: #f9f9f9;
+    
+    .tc-mvv-cards {
+      margin-top: 3rem;
+    }
+    
+    .tc-mvv-card {
+      height: 100%;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+      }
+      
+      .card-body {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      
+      .tc-mvv-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba($teocat-green, 0.1);
+        color: $teocat-green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        
+        i {
+          font-size: 2rem;
+        }
+      }
+      
+      h3 {
+        color: $teocat-brown;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 0;
+          width: 50px;
+          height: 3px;
+          background-color: $teocat-green;
+          border-radius: 3px;
+        }
+      }
+      
+      p {
+        color: #495057;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      
+      .tc-valores-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+          color: #495057;
+          font-size: 1rem;
+          
+          i {
+            color: $teocat-green;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+  
+  // Instalaciones Section
+  .tc-instalaciones-section {
+    background-color: #f9f9f9;
+    
+    .tc-instalaciones-cards {
+      margin-top: 3rem;
+    }
+    
+    .tc-instalacion-card {
+      height: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        
+        .tc-instalacion-image {
+          transform: scale(1.1);
+        }
+        
+        .tc-instalacion-link {
+          color: color.adjust($teocat-green, $lightness: -10%);
+        }
+      }
+      
+      .tc-instalacion-image-container {
+        height: 250px;
+        overflow: hidden;
+        
+        .tc-instalacion-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+      }
+      
+      .tc-instalacion-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        
+        h4 {
+          color: $teocat-brown;
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+        
+        p {
+          color: #495057;
+          font-size: 1rem;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+        
+        .tc-instalacion-link {
+          color: $teocat-green;
+          font-weight: 600;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          transition: all 0.3s ease;
+          margin-top: auto;
+          
+          i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+          }
+          
+          &:hover i {
+            transform: translateX(5px);
+          }
+        }
+      }
+    }
+  }
+  
+  // Compromiso Ambiental Section
+  .tc-compromiso-section {
+    background-color: white;
+    
+    .tc-compromiso-content {
+      p {
+        color: #495057;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      
+      .tc-compromiso-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5rem;
+          
+          i {
+            color: white;
+            background-color: $teocat-green;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+          }
+          
+          div {
+            h5 {
+              color: $teocat-brown;
+              font-weight: 600;
+              margin-bottom: 0.5rem;
+            }
+            
+            p {
+              color: #495057;
+              font-size: 1rem;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+    
+    .tc-compromiso-image-container {
+      position: relative;
+      
+      .tc-compromiso-image {
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+      }
+      
+      .tc-compromiso-stats {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+        
+        @media (max-width: 767.98px) {
+          position: relative;
+          bottom: 0;
+          margin-top: 2rem;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .tc-stat-item {
+          background-color: white;
+          border-radius: 1rem;
+          padding: 1.5rem;
+          text-align: center;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          min-width: 120px;
+          
+          .tc-stat-number {
+            display: block;
+            color: $teocat-green;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+          }
+          
+          .tc-stat-text {
+            display: block;
+            color: $teocat-brown;
+            font-size: 0.9rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

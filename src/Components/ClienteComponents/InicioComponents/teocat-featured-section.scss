@@ -1,0 +1,206 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.teocat-featured {
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  padding: 5rem 0;
+  
+  &__header {
+    margin-bottom: 2rem;
+  }
+  
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  
+  // EPM-inspired accent line
+  &__accent-line {
+    width: 80px;
+    height: 4px;
+    background-color: $teocat-green;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+  }
+  
+  &__title {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    max-width: 600px;
+  }
+  
+  &__button-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__view-all {
+    border-color: $teocat-green;
+    color: $teocat-green;
+    transition: all 0.3s ease;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    
+    // EPM-inspired button hover effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba($teocat-green, 0.2) 50%, 
+        transparent 100%
+      );
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+    
+    &:hover {
+      background-color: $teocat-green;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba($teocat-green, 0.3);
+      
+      &::after {
+        left: 100%;
+      }
+    }
+  }
+  
+  // EPM-inspired carousel container
+  &__carousel-container {
+    position: relative;
+    padding: 1rem;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(to right, 
+        transparent 0%, 
+        rgba($teocat-green, 0.3) 50%, 
+        transparent 100%
+      );
+    }
+  }
+  
+  &__carousel {
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__slide-wrapper {
+    height: 100%;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  
+  &__swiper {
+    padding-bottom: 60px;
+    padding-top: 20px;
+    
+    // EPM-inspired pagination
+    .swiper-pagination {
+      bottom: 10px;
+      
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: $teocat-brown;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        
+        &-active {
+          opacity: 1;
+          background-color: $teocat-green;
+          transform: scale(1.2);
+        }
+      }
+    }
+    
+    // EPM-inspired navigation buttons
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background-color: rgba($teocat-green, 0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      
+      &::after {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      
+      &:hover {
+        background-color: $teocat-green;
+        transform: scale(1.1);
+      }
+    }
+    
+    // EPM-inspired active slide effect
+    .swiper-slide-active {
+      .teocat-featured__slide-wrapper {
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .teocat-featured {
+    &__title {
+      font-size: 2rem;
+    }
+    
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .teocat-featured {
+    padding: 3rem 0;
+    
+    &__title {
+      font-size: 1.75rem;
+    }
+    
+    &__view-all {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+    }
+    
+    &__carousel-container {
+      padding: 0.5rem;
+    }
+  }
+}

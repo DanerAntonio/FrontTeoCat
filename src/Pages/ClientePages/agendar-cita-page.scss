@@ -1,0 +1,560 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.agendar-cita-page {
+  .page-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    
+    .page-title {
+      color: $teocat-brown;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // Estilos para los pasos
+  .steps-progress {
+    margin: 2rem 0;
+    
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      
+      .steps-line {
+        position: absolute;
+        top: 24px;
+        left: 40px;
+        right: 40px;
+        height: 2px;
+        background-color: #e9ecef;
+        z-index: 1;
+      }
+      
+      .step-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        
+        .step-circle {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: white;
+          border: 2px solid #e9ecef;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          color: #6c757d;
+          margin-bottom: 0.5rem;
+          transition: all 0.3s ease;
+        }
+        
+        .step-label {
+          font-size: 0.875rem;
+          color: #6c757d;
+          font-weight: 500;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+        
+        &.active {
+          .step-circle {
+            border-color: $teocat-green;
+            color: $teocat-green;
+          }
+          
+          &:not(.current) .step-circle {
+            background-color: $teocat-green;
+            color: white;
+          }
+          
+          .step-label {
+            color: $teocat-brown;
+            font-weight: 600;
+          }
+        }
+        
+        &.current {
+          .step-circle {
+            border-width: 3px;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 5px rgba($teocat-green, 0.2);
+          }
+        }
+      }
+    }
+  }
+  
+  // Estilos para los encabezados de pasos
+  .step-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: $teocat-green;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+  }
+  
+  // Estilos para los botones de pasos
+  .step-button {
+    min-width: 120px;
+    
+    &.btn-success {
+      background-color: $teocat-green;
+      border-color: $teocat-green;
+      
+      &:hover, &:focus {
+        background-color: color.adjust($teocat-green, $lightness: -10%);
+        border-color: color.adjust($teocat-green, $lightness: -10%);
+      }
+    }
+  }
+  
+  // Estilos para el calendario
+  .calendar-container {
+    .appointment-calendar {
+      width: 100%;
+      border: none;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      
+      .react-calendar__navigation {
+        margin-bottom: 0.5rem;
+        
+        button {
+          min-width: 44px;
+          background: none;
+          font-size: 1rem;
+          color: $teocat-brown;
+          
+          &:enabled:hover,
+          &:enabled:focus {
+            background-color: #f8f9fa;
+          }
+          
+          &.react-calendar__navigation__label {
+            font-weight: 600;
+          }
+        }
+      }
+      
+      .react-calendar__month-view__weekdays {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.75rem;
+        
+        abbr {
+          text-decoration: none;
+          color: $teocat-brown;
+        }
+      }
+      
+      .react-calendar__tile {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+        position: relative;
+        
+        &:enabled:hover,
+        &:enabled:focus {
+          background-color: #f8f9fa;
+        }
+        
+        &--active {
+          background-color: $teocat-green !important;
+          color: white;
+          
+          &:enabled:hover,
+          &:enabled:focus {
+            background-color: color.adjust($teocat-green, $lightness: -10%) !important;
+          }
+        }
+        
+        &--now {
+          background-color: rgba($teocat-green, 0.1);
+          
+          &:enabled:hover,
+          &:enabled:focus {
+            background-color: rgba($teocat-green, 0.2);
+          }
+        }
+        
+        .availability-badge {
+          position: absolute;
+          bottom: 2px;
+          right: 2px;
+          font-size: 0.6rem;
+          padding: 0.1rem 0.25rem;
+        }
+      }
+    }
+    
+    .calendar-legend {
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+      
+      .legend-text {
+        font-size: 0.75rem;
+        color: #6c757d;
+      }
+    }
+  }
+  
+  // Estilos para los horarios
+  .time-slots-container {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    
+    .time-slot-btn {
+      min-width: 80px;
+      height: 38px; // Altura fija para todos los botones
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &.btn-success {
+        background-color: $teocat-green;
+        border-color: $teocat-green;
+        
+        &:hover, &:focus {
+          background-color: color.adjust($teocat-green, $lightness: -10%);
+          border-color: color.adjust($teocat-green, $lightness: -10%);
+        }
+      }
+      
+      &.disabled {
+        opacity: 0.6;
+        text-decoration: line-through;
+      }
+    }
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+      
+      &:hover {
+        background: #aaa;
+      }
+    }
+  }
+  
+  // Estilos para las tarjetas de servicios
+  .service-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    &.selected {
+      border-color: $teocat-green !important;
+      box-shadow: 0 0.5rem 1rem rgba($teocat-green, 0.15) !important;
+    }
+    
+    .service-card-img-container {
+      height: 150px;
+      overflow: hidden;
+      position: relative;
+      
+      .service-card-img {
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .service-selected-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $teocat-green;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+    
+    &:hover .service-card-img {
+      transform: scale(1.1);
+    }
+    
+    .service-card-title {
+      color: $teocat-brown;
+      font-weight: 600;
+    }
+    
+    .service-card-description {
+      color: #6c757d;
+      font-size: 0.875rem;
+      height: 60px;
+      overflow: hidden;
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    
+    .service-card-price {
+      font-weight: 700;
+      color: $teocat-green;
+    }
+    
+    .service-card-duration {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    
+    .service-card-btn {
+      background-color: $teocat-green;
+      border-color: $teocat-green;
+      
+      &:hover, &:focus {
+        background-color: color.adjust($teocat-green, $lightness: -10%);
+        border-color: color.adjust($teocat-green, $lightness: -10%);
+      }
+      
+      &.btn-outline-success {
+        color: $teocat-green;
+        background-color: transparent;
+        
+        &:hover, &:focus {
+          color: white;
+          background-color: $teocat-green;
+        }
+      }
+    }
+  }
+  
+  // Estilos para el contenedor de servicios
+  .services-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+      
+      &:hover {
+        background: #aaa;
+      }
+    }
+  }
+  
+  // Estilos para las tarjetas de mascotas
+  .pet-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    
+    &:hover {
+      border-color: #dee2e6;
+      transform: translateY(-3px);
+    }
+    
+    &.selected {
+      border-color: $teocat-green;
+      background-color: rgba($teocat-green, 0.05);
+    }
+    
+    .pet-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($teocat-brown, 0.1);
+      color: $teocat-brown;
+      
+      .pet-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .pet-selected-check {
+      color: $teocat-green;
+      font-size: 1.5rem;
+    }
+  }
+  
+  // Estilos para el resumen de la cita
+  .appointment-summary {
+    .selected-services-list {
+      .service-price {
+        font-weight: 600;
+        color: $teocat-green;
+      }
+    }
+    
+    .appointment-submit-btn {
+      background-color: $teocat-green;
+      border-color: $teocat-green;
+      
+      &:hover, &:focus {
+        background-color: color.adjust($teocat-green, $lightness: -10%);
+        border-color: color.adjust($teocat-green, $lightness: -10%);
+      }
+    }
+    
+    .appointment-policies {
+      a {
+        color: $teocat-brown;
+        text-decoration: none;
+        
+        &:hover {
+          color: $teocat-green;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  // Estilos para los formularios
+  .form-control, .form-select {
+    &:focus {
+      border-color: $teocat-green;
+      box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+    }
+  }
+  
+  .input-group-text {
+    background-color: #f8f9fa;
+    color: $teocat-brown;
+  }
+  
+  // Estilos para botones de iconos
+  .btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
+// Responsive
+@media (max-width: 991.98px) {
+  .agendar-cita-page {
+    .appointment-summary {
+      position: static !important;
+      margin-top: 2rem;
+    }
+    
+    .steps-progress {
+      .steps-container {
+        .step-label {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .agendar-cita-page {
+    .steps-progress {
+      .steps-container {
+        .step-circle {
+          width: 40px;
+          height: 40px;
+          font-size: 0.875rem;
+        }
+        
+        .steps-line {
+          top: 20px;
+        }
+        
+        .step-label {
+          font-size: 0.7rem;
+        }
+      }
+    }
+    
+    .calendar-container {
+      .appointment-calendar {
+        font-size: 0.875rem;
+        
+        .react-calendar__tile {
+          padding: 0.5rem;
+        }
+      }
+    }
+    
+    .time-slots-container {
+      max-height: 200px;
+      
+      .time-slot-btn {
+        min-width: 70px;
+        font-size: 0.875rem;
+      }
+    }
+    
+    .service-card {
+      .service-card-img-container {
+        height: 120px;
+      }
+      
+      .service-card-description {
+        height: auto;
+        max-height: 60px;
+      }
+    }
+  }
+}

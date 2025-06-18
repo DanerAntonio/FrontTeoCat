@@ -1,0 +1,148 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.services-section {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($teocat-green, 0.1) 0%, rgba($teocat-green, 0) 70%);
+    top: -100px;
+    right: -100px;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($teocat-blue, 0.1) 0%, rgba($teocat-blue, 0) 70%);
+    bottom: -100px;
+    left: -50px;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .view-all-btn {
+    border-color: $teocat-green;
+    color: $teocat-green;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $teocat-green;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba($teocat-green, 0.3);
+    }
+  }
+
+  .services-swiper {
+    padding-bottom: 50px;
+    padding-top: 20px;
+    
+    .swiper-pagination {
+      bottom: 0;
+      
+      .swiper-pagination-bullet {
+        background-color: $teocat-brown;
+        opacity: 0.5;
+        
+        &-active {
+          opacity: 1;
+          background-color: $teocat-green;
+        }
+      }
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background-color: rgba($teocat-brown, 0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      
+      &::after {
+        font-size: 1.25rem;
+      }
+      
+      &:hover {
+        background-color: $teocat-brown;
+      }
+    }
+  }
+
+  .service-card-wrapper {
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+  }
+
+  .services-placeholder {
+    background-color: rgba($teocat-green, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    i {
+      font-size: 3rem;
+    }
+    
+    h5 {
+      color: $teocat-brown;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      color: #6c757d;
+    }
+  }
+
+  .schedule-btn {
+    background-color: $teocat-green;
+    border-color: $teocat-green;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba($teocat-green, 0.3);
+    
+    &:hover {
+      background-color: color.adjust($teocat-green, $lightness: -10%);
+      border-color: color.adjust($teocat-green, $lightness: -10%);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba($teocat-green, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .services-section {
+    padding: 3rem 0;
+  }
+}
+

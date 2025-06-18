@@ -1,0 +1,119 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.terminos-page {
+  .page-header {
+    background-color: lighten($teocat-brown, 65%);
+    padding: 4rem 0;
+    margin-top: 2rem;
+
+    .page-title {
+      color: $teocat-brown;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      height: 4px;
+      width: 70px;
+      background-color: $teocat-green;
+      margin: 0 auto 1.5rem;
+      border-radius: 2px;
+    }
+
+    .lead {
+      color: $teocat-brown;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  .terms-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    .last-updated {
+      color: color.adjust($teocat-brown, $lightness: 10%);
+      font-style: italic;
+      font-size: 0.9rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .terms-section {
+      margin-bottom: 2rem;
+
+      h2 {
+        color: $teocat-brown;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40px;
+          height: 3px;
+          background-color: $teocat-green;
+          border-radius: 1.5px;
+        }
+      }
+
+      p, li {
+        color: #4a4a4a;
+        line-height: 1.6;
+      }
+
+      strong {
+        color: $teocat-brown;
+      }
+
+      ul, ol {
+        padding-left: 1.5rem;
+        
+        li {
+          margin-bottom: 0.5rem;
+        }
+
+        ul, ol {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+
+    .acceptance-note {
+      background-color: lighten($teocat-green, 45%);
+      border-radius: 0.5rem;
+      border-left: 4px solid $teocat-green;
+
+      p {
+        color: darken($teocat-green, 15%);
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 3rem 0;
+    }
+
+    .terms-section {
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+

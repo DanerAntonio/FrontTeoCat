@@ -1,0 +1,69 @@
+// Import variables from Layout.scss
+@import './Layout.scss';
+
+// Footer styles
+.footerA{
+  background-color: #ffffff;
+  border-top: 1px solid $border-color;
+  padding: 1.5rem;
+  margin-top: auto;
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @media (min-width: 768px) {
+      align-items: flex-start;
+    }
+    
+    .brand-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $text-color;
+      
+      .text-success {
+        color: $secondary-color;
+      }
+    }
+    
+    .footer-tagline {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+  }
+  
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @media (min-width: 768px) {
+      align-items: flex-end;
+    }
+    
+    .copyright, .location {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin: 0;
+    }
+    
+    .location {
+      margin-top: 0.25rem;
+    }
+  }
+}
+

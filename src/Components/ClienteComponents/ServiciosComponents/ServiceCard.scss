@@ -1,0 +1,103 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.service-card-container {
+  height: 100%;
+  display: flex;
+}
+
+.service-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-5px);
+  }
+
+  .card-img-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    
+    .service-image {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      
+      &.zoomed {
+        transform: scale(1.1);
+      }
+    }
+    
+    .service-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      
+      .service-name {
+        color: white;
+        margin: 0;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .service-description {
+    color: #6c757d;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 4.5rem; /* Altura fija para todas las descripciones */
+  }
+
+  .service-price {
+    font-weight: 700;
+    color: $teocat-green;
+    font-size: 1.1rem;
+  }
+
+  .btn-brown {
+    background-color: $teocat-brown;
+    border-color: $teocat-brown;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: color.adjust($teocat-brown, $lightness: -10%);
+      border-color: color.adjust($teocat-brown, $lightness: -10%);
+      color: white;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 767.98px) {
+  .service-card {
+    .service-description {
+      height: auto;
+      line-clamp: 4;
+    }
+  }
+}
+

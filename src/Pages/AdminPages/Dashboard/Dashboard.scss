@@ -1,0 +1,678 @@
+// Variables
+$primary-color: #00BFFF; // Neon azul
+$secondary-color: #FF00FF; // Neon rosa
+$tertiary-color: #00FF00; // Neon verde
+$background-color: #ffffff;
+$card-bg: #ffffff;
+$text-color: #333333;
+$text-muted: #6b7280;
+$border-color: rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$border-radius: 16px;
+$transition-speed: 0.3s;
+
+// Mixins para efectos neón
+@mixin neon-glow($color, $intensity: 1) {
+  box-shadow: 0 0 5px rgba($color, $intensity * 0.5),
+              0 0 10px rgba($color, $intensity * 0.3),
+              0 0 15px rgba($color, $intensity * 0.2),
+              0 0 20px rgba($color, $intensity * 0.1);
+}
+
+@mixin neon-text-glow($color, $intensity: 1) {
+  text-shadow: 0 0 5px rgba($color, $intensity * 0.5),
+               0 0 10px rgba($color, $intensity * 0.3),
+               0 0 15px rgba($color, $intensity * 0.2),
+               0 0 20px rgba($color, $intensity * 0.1);
+}
+
+@mixin neon-border($color, $intensity: 1) {
+  border: 1px solid rgba($color, 0.5);
+  box-shadow: 0 0 5px rgba($color, $intensity * 0.3),
+              0 0 10px rgba($color, $intensity * 0.2),
+              inset 0 0 5px rgba($color, $intensity * 0.1);
+}
+
+// Dashboard styles
+.dashboard {
+  padding: 1.5rem;
+  background-color: $background-color;
+  min-height: 100vh;
+  position: relative;
+  color: $text-color;
+  overflow: hidden;
+  
+  // Fondo animado con CSS
+  .animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    
+    // Rayos de luz
+    .light-beam {
+      position: absolute;
+      background: linear-gradient(90deg, rgba($primary-color, 0.1), rgba($secondary-color, 0.1));
+      height: 100%;
+      width: 30%;
+      border-radius: 50%;
+      filter: blur(30px);
+      opacity: 0.7;
+      transform-origin: center;
+      animation: rotate 20s infinite linear;
+      will-change: transform;
+      
+      &.light-beam-1 {
+        top: -20%;
+        left: 10%;
+        animation-duration: 25s;
+      }
+      
+      &.light-beam-2 {
+        top: 30%;
+        right: -10%;
+        animation-duration: 30s;
+        animation-delay: -5s;
+        background: linear-gradient(90deg, rgba($tertiary-color, 0.1), rgba($primary-color, 0.1));
+      }
+      
+      &.light-beam-3 {
+        bottom: -10%;
+        left: 30%;
+        animation-duration: 35s;
+        animation-delay: -10s;
+        background: linear-gradient(90deg, rgba($secondary-color, 0.1), rgba($tertiary-color, 0.1));
+      }
+    }
+    
+    // Huellas flotantes
+    .floating-paws {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      .paw {
+        position: absolute;
+        font-size: 24px;
+        opacity: 0.2;
+        animation: float 15s infinite linear;
+        will-change: transform;
+        filter: drop-shadow(0 0 5px rgba($primary-color, 0.5));
+        
+        &.paw-1 {
+          top: 15%;
+          left: 10%;
+          animation-duration: 20s;
+        }
+        
+        &.paw-2 {
+          top: 40%;
+          right: 15%;
+          animation-duration: 25s;
+          animation-delay: -5s;
+          filter: drop-shadow(0 0 5px rgba($secondary-color, 0.5));
+        }
+        
+        &.paw-3 {
+          bottom: 20%;
+          left: 30%;
+          animation-duration: 22s;
+          animation-delay: -10s;
+          filter: drop-shadow(0 0 5px rgba($tertiary-color, 0.5));
+        }
+        
+        &.paw-4 {
+          top: 25%;
+          right: 35%;
+          animation-duration: 18s;
+          animation-delay: -8s;
+          filter: drop-shadow(0 0 5px rgba($primary-color, 0.5));
+        }
+        
+        &.paw-5 {
+          bottom: 35%;
+          right: 25%;
+          animation-duration: 23s;
+          animation-delay: -12s;
+          filter: drop-shadow(0 0 5px rgba($secondary-color, 0.5));
+        }
+        
+        &.paw-6 {
+          bottom: 15%;
+          right: 10%;
+          animation-duration: 28s;
+          animation-delay: -15s;
+          filter: drop-shadow(0 0 5px rgba($tertiary-color, 0.5));
+        }
+      }
+    }
+  }
+  
+  // Dashboard header
+  .dashboard-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    
+    .dashboard-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $text-color;
+      margin: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      .title-icon {
+        font-size: 1.75rem;
+      }
+      
+      .title-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, $primary-color, $secondary-color, $tertiary-color, $primary-color);
+        background-size: 300% 100%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 8s ease infinite;
+        opacity: 0.8;
+        pointer-events: none;
+      }
+    }
+    
+    .date-display {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $text-muted;
+      font-size: 0.875rem;
+      background: rgba($card-bg, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      @include neon-border($primary-color, 0.5);
+      backdrop-filter: blur(5px);
+      
+      svg {
+        color: $primary-color;
+        @include neon-text-glow($primary-color, 0.8);
+      }
+    }
+  }
+  
+  // Filters container
+  .dashboard-filters {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    
+    .filters-container {
+      background: rgba($card-bg, 0.8);
+      border-radius: $border-radius;
+      padding: 1rem 1.5rem;
+      box-shadow: $shadow-md;
+      @include neon-border($primary-color, 0.3);
+      backdrop-filter: blur(5px);
+      
+      .filter-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        
+        .filter-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 600;
+          color: $text-color;
+          
+          .filter-icon {
+            color: $primary-color;
+            @include neon-text-glow($primary-color, 0.8);
+          }
+        }
+        
+        .filter-controls {
+          display: flex;
+          gap: 0.75rem;
+          
+          .filter-item {
+            position: relative;
+            
+            .filter-selector {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              background: rgba($background-color, 0.8);
+              border-radius: 12px;
+              padding: 0.75rem 1rem;
+              cursor: pointer;
+              font-size: 0.875rem;
+              color: $text-color;
+              transition: all $transition-speed ease;
+              @include neon-border($primary-color, 0.3);
+              
+              &:hover {
+                @include neon-glow($primary-color, 0.5);
+              }
+              
+              .selector-icon, svg {
+                color: $primary-color;
+                @include neon-text-glow($primary-color, 0.8);
+              }
+            }
+            
+            .filter-dropdown {
+              position: absolute;
+              top: calc(100% + 0.5rem);
+              right: 0;
+              background: rgba($card-bg, 0.95);
+              border-radius: 12px;
+              box-shadow: $shadow-lg;
+              min-width: 150px;
+              z-index: 10;
+              overflow: hidden;
+              @include neon-border($primary-color, 0.3);
+              backdrop-filter: blur(10px);
+              
+              .dropdown-item {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+                color: $text-color;
+                cursor: pointer;
+                transition: all $transition-speed ease;
+                
+                &:hover {
+                  background: rgba($primary-color, 0.1);
+                }
+                
+                &.active {
+                  background: rgba($primary-color, 0.2);
+                  color: $primary-color;
+                  font-weight: 500;
+                  @include neon-text-glow($primary-color, 0.5);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Charts layout
+  .dashboard-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    
+    .secondary-charts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+  
+  // Chart card
+  .chart-card {
+    background: rgba($card-bg, 0.8);
+    border-radius: $border-radius;
+    padding: 1.5rem;
+    box-shadow: $shadow-lg;
+    display: flex;
+    flex-direction: column;
+    @include neon-border($primary-color, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, $primary-color, $secondary-color, $tertiary-color);
+      background-size: 200% 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      animation: gradient-shift 5s ease infinite;
+    }
+    
+    &:hover {
+      transform: translateY(-3px);
+      @include neon-glow($primary-color, 0.5);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+    
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      
+      .chart-title {
+        .title-with-icon {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.25rem;
+          
+          .icon-container {
+            position: relative;
+            
+            .chart-icon {
+              color: #fff;
+              padding: 0.5rem;
+              border-radius: 10px;
+              box-sizing: content-box;
+            }
+            
+            .icon-badge {
+              position: absolute;
+              bottom: -5px;
+              right: -5px;
+              font-size: 14px;
+              background: #fff;
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              box-shadow: $shadow-sm;
+              animation: pulse 2s infinite ease-in-out;
+            }
+          }
+          
+          h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $text-color;
+            margin: 0;
+          }
+        }
+        
+        .chart-subtitle {
+          font-size: 0.875rem;
+          color: $text-muted;
+          margin: 0.25rem 0 0 0;
+          padding-left: 2.75rem;
+        }
+      }
+      
+      .chart-value {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        
+        .value {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: $primary-color;
+          @include neon-text-glow($primary-color, 0.5);
+          
+          &.up {
+            color: $tertiary-color;
+            @include neon-text-glow($tertiary-color, 0.5);
+          }
+          
+          &.down {
+            color: $secondary-color;
+            @include neon-text-glow($secondary-color, 0.5);
+          }
+        }
+        
+        .label {
+          font-size: 0.75rem;
+          color: $text-muted;
+          margin-top: 0.25rem;
+        }
+      }
+    }
+    
+    .chart-content {
+      flex: 1;
+      position: relative;
+    }
+    
+    // Estilos específicos para cada tipo de gráfico
+    &.main-chart {
+      .chart-icon {
+        background: $primary-color;
+        box-shadow: 0 0 10px rgba($primary-color, 0.5);
+      }
+      
+      .neon-line {
+        filter: drop-shadow(0 0 3px rgba($primary-color, 0.5));
+      }
+      
+      .neon-bar {
+        filter: drop-shadow(0 0 3px rgba($primary-color, 0.5));
+      }
+      
+      .dot-pulse {
+        animation: pulse-blue 2s infinite;
+      }
+      
+      .pet-icon {
+        filter: drop-shadow(0 0 2px rgba($primary-color, 0.7));
+      }
+    }
+    
+    &.top-products-chart {
+      .chart-icon {
+        background: $secondary-color;
+        box-shadow: 0 0 10px rgba($secondary-color, 0.5);
+      }
+      
+      .neon-line-pink {
+        filter: drop-shadow(0 0 3px rgba($secondary-color, 0.5));
+      }
+      
+      .dot-pulse-pink {
+        animation: pulse-pink 2s infinite;
+      }
+      
+      .pet-icon-top {
+        filter: drop-shadow(0 0 2px rgba($secondary-color, 0.7));
+      }
+    }
+    
+    &.least-products-chart {
+      .chart-icon {
+        background: $tertiary-color;
+        box-shadow: 0 0 10px rgba($tertiary-color, 0.5);
+      }
+      
+      .neon-line-green {
+        filter: drop-shadow(0 0 3px rgba($tertiary-color, 0.5));
+      }
+      
+      .dot-pulse-green {
+        animation: pulse-green 2s infinite;
+      }
+      
+      .pet-icon-least {
+        filter: drop-shadow(0 0 2px rgba($tertiary-color, 0.7));
+      }
+    }
+  }
+  
+  // Tooltip personalizado
+  .custom-tooltip {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba($primary-color, 0.5);
+    @include neon-glow($primary-color, 0.8);
+    backdrop-filter: blur(5px);
+    
+    .tooltip-label {
+      color: #fff;
+      font-size: 14px;
+      margin: 0 0 5px 0;
+    }
+    
+    .tooltip-value {
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      
+      .tooltip-icon {
+        font-size: 20px;
+        animation: bounce 1s infinite alternate;
+      }
+    }
+  }
+}
+
+// Keyframes para animaciones
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-blue {
+  0% {
+    r: 4;
+    opacity: 1;
+    fill: $primary-color;
+  }
+  50% {
+    r: 6;
+    opacity: 0.7;
+    fill: lighten($primary-color, 20%);
+  }
+  100% {
+    r: 4;
+    opacity: 1;
+    fill: $primary-color;
+  }
+}
+
+@keyframes pulse-pink {
+  0% {
+    r: 3;
+    opacity: 1;
+    fill: $secondary-color;
+  }
+  50% {
+    r: 5;
+    opacity: 0.7;
+    fill: lighten($secondary-color, 20%);
+  }
+  100% {
+    r: 3;
+    opacity: 1;
+    fill: $secondary-color;
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    r: 3;
+    opacity: 1;
+    fill: $tertiary-color;
+  }
+  50% {
+    r: 5;
+    opacity: 0.7;
+    fill: lighten($tertiary-color, 20%);
+  }
+  100% {
+    r: 3;
+    opacity: 1;
+    fill: $tertiary-color;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) translateX(20px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(20px) translateX(10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+

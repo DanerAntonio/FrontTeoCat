@@ -1,0 +1,30 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-address-item {
+  padding: 1rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($teocat-green, 0.05);
+  }
+  
+  .tc-address-text {
+    font-size: 1.05rem;
+  }
+  
+  .tc-address-actions {
+    .btn {
+      padding: 0.35rem 0.5rem;
+      
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

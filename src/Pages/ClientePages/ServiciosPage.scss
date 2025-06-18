@@ -1,0 +1,90 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.servicios-page {
+  .container {
+    .spinner-border {
+      color: $teocat-green;
+    }
+
+    .position-relative {
+      .btn-lg {
+        background-color: $teocat-green;
+        color: white;
+
+        &:hover,
+        &:focus {
+          background-color: color.adjust($teocat-green, $lightness: -10%);
+        }
+      }
+    }
+
+    .row {
+      .col-lg-8 {
+        h2 {
+          color: $teocat-brown;
+        }
+      }
+
+      .col-md-4 {
+        .card {
+          .card-body {
+            h4 {
+              color: $teocat-brown;
+            }
+
+            .bi {
+              color: $teocat-green;
+            }
+          }
+        }
+      }
+    }
+
+    .accordion {
+      .accordion-item {
+        .accordion-header {
+          .accordion-button {
+            color: $teocat-brown;
+
+            &:not(.collapsed) {
+              color: $teocat-green;
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      &.btn {
+        &.btn-lg {
+          &[href^="tel:"] {
+            background-color: $teocat-green;
+            color: white;
+
+            &:hover,
+            &:focus {
+              background-color: color.adjust($teocat-green, $lightness: -10%);
+            }
+          }
+
+          &[href^="https://wa.me/"] {
+            background-color: $teocat-brown;
+            color: white;
+
+            &:hover,
+            &:focus {
+              background-color: color.adjust($teocat-brown, $lightness: -10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,284 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-profile-card-header {
+  background: linear-gradient(to right, rgba($teocat-green, 0.05), rgba($teocat-blue, 0.05));
+  border-bottom: 1px solid rgba($teocat-green, 0.1);
+  padding: 1.25rem 1.5rem;
+  
+  h4 {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 1.35rem;
+  }
+}
+
+.tc-pet-card {
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .tc-pet-image-container {
+    height: 100%;
+    
+    .tc-pet-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+  
+  &:hover .tc-pet-image {
+    transform: scale(1.1);
+  }
+  
+  .tc-pet-name {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  
+  .tc-pet-badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+  }
+  
+  .tc-pet-details {
+    font-size: 0.95rem;
+    
+    p {
+      margin-bottom: 0.5rem;
+      
+      strong {
+        color: $teocat-brown;
+      }
+    }
+  }
+  
+  .tc-pet-actions {
+    display: flex;
+    justify-content: flex-start;
+    
+    .btn {
+      padding: 0.35rem 0.5rem;
+      
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Estilos para el carnet de mascota (estilo pasaporte)
+.tc-pet-details-modal {
+  .modal-body {
+    padding: 0;
+  }
+  
+  .tc-pet-carnet {
+    position: relative;
+    background-color: #f8f9fa;
+    border-radius: 0 0 0.5rem 0.5rem;
+    overflow: hidden;
+    
+    // Fondo estilo pasaporte
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 50% 0, rgba($teocat-green, 0.1) 5%, transparent 15%),
+        radial-gradient(circle at 10% 30%, rgba($teocat-blue, 0.1) 5%, transparent 15%),
+        radial-gradient(circle at 90% 40%, rgba($teocat-brown, 0.1) 5%, transparent 15%),
+        radial-gradient(circle at 30% 70%, rgba($teocat-green, 0.1) 5%, transparent 15%),
+        radial-gradient(circle at 70% 90%, rgba($teocat-blue, 0.1) 5%, transparent 15%),
+        repeating-linear-gradient(45deg, rgba($teocat-brown, 0.03) 0px, rgba($teocat-brown, 0.03) 2px, transparent 2px, transparent 10px),
+        repeating-linear-gradient(135deg, rgba($teocat-green, 0.03) 0px, rgba($teocat-green, 0.03) 2px, transparent 2px, transparent 10px);
+      background-color: #f9f7f2;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    // Contenedor de la foto
+    .tc-pet-carnet-photo-container {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 1rem 1rem;
+      position: relative;
+      z-index: 1;
+      
+      .tc-pet-carnet-photo {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      }
+    }
+    
+    // Título (nombre de la mascota) - ahora debajo de la foto
+    .tc-pet-carnet-title {
+      text-align: center;
+      color: $teocat-brown;
+      font-weight: 700;
+      font-size: 1.75rem;
+      margin: 0.5rem 0 1.5rem;
+      position: relative;
+      z-index: 1;
+      
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: $teocat-green;
+        margin: 0.5rem auto 0;
+        border-radius: 3px;
+      }
+    }
+    
+    // Información de la mascota en columnas
+    .tc-pet-carnet-info {
+      padding: 0 1.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      
+      .tc-pet-carnet-info-item {
+        display: flex;
+        align-items: center;
+        
+        .tc-pet-carnet-info-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: $teocat-green;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 0.75rem;
+          flex-shrink: 0;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+          
+          i {
+            font-size: 1.2rem;
+          }
+        }
+        
+        .tc-pet-carnet-info-content {
+          h6 {
+            color: $teocat-brown;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+          }
+          
+          p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #495057;
+          }
+        }
+      }
+    }
+    
+    // Pie del carnet con botones
+    .tc-pet-carnet-footer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      
+      .tc-pet-carnet-btn-edit,
+      .tc-pet-carnet-btn-delete {
+        padding: 0.5rem 1.5rem;
+        border-radius: 2rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+    }
+    
+    // Mini footer con derechos de la empresa
+    .tc-pet-carnet-copyright {
+      text-align: center;
+      padding: 0.75rem;
+      background-color: rgba($teocat-brown, 0.05);
+      border-top: 1px solid rgba($teocat-brown, 0.1);
+      position: relative;
+      z-index: 1;
+      
+      p {
+        margin: 0;
+        font-size: 0.7rem;
+        color: rgba($teocat-brown, 0.7);
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tc-pet-carnet-photo-container {
+    padding: 1rem 1rem 0.5rem !important;
+    
+    .tc-pet-carnet-photo {
+      width: 150px !important;
+      height: 150px !important;
+    }
+  }
+  
+  .tc-pet-carnet-title {
+    font-size: 1.5rem !important;
+    margin: 0.5rem 0 1rem !important;
+  }
+  
+  .tc-pet-carnet-info {
+    padding: 0 1rem 1rem !important;
+    
+    .tc-pet-carnet-info-item {
+      .tc-pet-carnet-info-icon {
+        width: 35px !important;
+        height: 35px !important;
+        
+        i {
+          font-size: 1rem !important;
+        }
+      }
+      
+      .tc-pet-carnet-info-content {
+        p {
+          font-size: 0.95rem !important;
+        }
+      }
+    }
+  }
+  
+  .tc-pet-carnet-footer {
+    flex-direction: column;
+    padding: 0 1rem 1rem !important;
+    
+    .tc-pet-carnet-btn-edit,
+    .tc-pet-carnet-btn-delete {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+/* Estilos generales para la interfaz de cliente */
+
+/* Ajuste para el navbar fijo */
+body {
+  padding-top: 76px;
+}
+
+/* Colores corporativos */
+:root {
+  --teocat-brown: #5a3921;
+  --teocat-green: #7ab51d;
+  --teocat-blue: #00b2e3;
+  --teocat-white: #ffffff;
+}
+
+/* Estilos para el navbar */
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* Estilos para las tarjetas de productos */
+.product-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Estilos para las tarjetas de servicios */
+.service-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Personalización de componentes Bootstrap */
+.btn-primary {
+  background-color: var(--teocat-green);
+  border-color: var(--teocat-green);
+}
+
+.btn-primary:hover {
+  background-color: #689b19;
+  border-color: #689b19;
+}
+
+.btn-secondary {
+  background-color: var(--teocat-brown);
+  border-color: var(--teocat-brown);
+}
+
+.btn-secondary:hover {
+  background-color: #4a2e1b;
+  border-color: #4a2e1b;
+}
+
+.text-primary {
+  color: var(--teocat-green) !important;
+}
+
+.bg-primary {
+  background-color: var(--teocat-green) !important;
+}
+
+.text-secondary {
+  color: var(--teocat-brown) !important;
+}
+
+.bg-secondary {
+  background-color: var(--teocat-brown) !important;
+}
+
+/* Personalización de formularios */
+.form-control:focus {
+  border-color: var(--teocat-green);
+  box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+}
+
+/* Personalización de acordeones */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(122, 181, 29, 0.1);
+  color: var(--teocat-brown);
+}
+
+.accordion-button:focus {
+  border-color: var(--teocat-green);
+  box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-caption {
+    bottom: 10% !important;
+  }
+
+  .carousel-caption h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem !important;
+  }
+}
+

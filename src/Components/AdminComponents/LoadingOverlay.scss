@@ -1,0 +1,83 @@
+@import "../../../src//Components//AdminComponents/Variables.scss"; // Ajusta la ruta según tu estructura de proyecto
+
+// Overlay a pantalla completa
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $zindex-loading-overlay;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  transition: $transition-base;
+}
+
+// Overlay contenido en un contenedor
+.loading-overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: $border-radius;
+}
+
+.loading-content {
+  background: white;
+  padding: $spacing-xl;
+  border-radius: $border-radius;
+  text-align: center;
+  box-shadow: $box-shadow;
+  animation: fadeIn 0.3s ease;
+  max-width: 90%;
+}
+
+.loading-content .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+.loading-message {
+  color: $dark;
+  font-weight: $font-weight-bold;
+  margin-top: $spacing-md;
+  margin-bottom: 0;
+}
+
+// Animación de entrada
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 576px) {
+  .loading-content {
+    padding: $spacing-lg;
+  }
+  
+  .loading-content .spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .loading-message {
+    font-size: 0.9rem;
+  }
+}

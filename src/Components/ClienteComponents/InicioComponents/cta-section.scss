@@ -1,0 +1,175 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.cta-section {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  
+  .cta-wrapper {
+    background: linear-gradient(to right, rgba($teocat-brown, 0.9), rgba($teocat-brown, 0.8)), 
+                url('https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80&w=1920') center center/cover no-repeat;
+    border-radius: 1rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, $teocat-green, $teocat-blue);
+    }
+    
+    .cta-content {
+      color: white;
+      
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 80px;
+          height: 3px;
+          background-color: $teocat-green;
+          border-radius: 3px;
+        }
+      }
+      
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        max-width: 600px;
+      }
+      
+      .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        
+        .btn {
+          padding: 0.75rem 1.5rem;
+          font-weight: 600;
+          border-radius: 50px;
+          transition: all 0.3s ease;
+          
+          &.btn-light {
+            color: $teocat-brown;
+            
+            &:hover {
+              background-color: #f8f9fa;
+              transform: translateY(-3px);
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+          }
+          
+          &.cta-primary-btn {
+            background-color: $teocat-green;
+            border-color: $teocat-green;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            
+            &:hover {
+              background-color: color.adjust($teocat-green, $lightness: -10%);
+              border-color: color.adjust($teocat-green, $lightness: -10%);
+              transform: translateY(-3px);
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
+    
+    .cta-image-container {
+      position: relative;
+      
+      .cta-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 5px solid white;
+        transform: rotate(3deg);
+      }
+      
+      .cta-image-badge {
+        position: absolute;
+        top: 20px;
+        right: -15px;
+        background-color: $teocat-green;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: rotate(10deg);
+      }
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .cta-section {
+    .cta-wrapper {
+      padding: 2rem;
+      
+      .cta-content {
+        text-align: center;
+        
+        h2 {
+          font-size: 2rem;
+          
+          &::after {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+        
+        p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        .cta-buttons {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cta-section {
+    .cta-wrapper {
+      padding: 1.5rem;
+      
+      .cta-content {
+        h2 {
+          font-size: 1.75rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,1064 @@
+// Variables
+$primary-color: #4f46e5;
+$secondary-color: #6b7280;
+$success-color: #10b981;
+$danger-color: #ef4444;
+$warning-color: #f59e0b;
+$light-color: #f3f4f6;
+$dark-color: #1f2937;
+$border-color: #e5e7eb;
+$border-radius: 0.375rem;
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+// Colores para el calendario
+$disponible-color: #10b981;
+$pocas-color: #f59e0b;
+$lleno-color: #ef4444;
+$selected-color: #4f46e5; // Cambiado de verde a azul para combinar con el tema admin
+
+// Estilos generales
+.nueva-cita-container {
+  background-color: #f9fafb;
+  min-height: calc(100vh - 60px);
+  font-size: 0.9rem;
+  
+  .page-title {
+    font-weight: 600;
+    color: $dark-color;
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+  }
+  
+  .step-card, .summary-card {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    background-color: white;
+    height: 100%;
+    padding: 1rem;
+  }
+  
+  .summary-card {
+    position: sticky;
+    top: 1rem;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  h3, h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  h5 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control, .form-select {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+// Estilos para el indicador de pasos
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  padding: 0;
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid $secondary-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: $secondary-color;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .step-label {
+      font-size: 0.85rem;
+      color: $secondary-color;
+      font-weight: 500;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    &.active {
+      .step-circle {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: white;
+        box-shadow: 0 0 0 4px rgba($primary-color, 0.2);
+      }
+      
+      .step-label {
+        color: $primary-color;
+        font-weight: 600;
+      }
+    }
+    
+    &.completed {
+      .step-circle {
+        background-color: $success-color;
+        border-color: $success-color;
+        color: white;
+      }
+    }
+  }
+  
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background-color: $border-color;
+    margin: 0 0.5rem;
+    position: relative;
+    top: -18px;
+    z-index: 0;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: $success-color;
+      transition: width 0.3s ease;
+    }
+  }
+}
+
+// Estilos para los pasos
+.step-container {
+  position: relative;
+  padding: 1rem 0;
+  
+  .step-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $primary-color; // Cambiado de $selected-color a $primary-color
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba($primary-color, 0.3);
+  }
+  
+  .step-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $dark-color;
+    margin-bottom: 1.5rem;
+    padding-left: 2.5rem;
+  }
+  
+  .step-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    
+    button {
+      min-width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      
+      &:first-child {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// Nuevo diseño para el layout de citas
+.appointment-layout {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
+  
+  .calendar-section {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .time-section {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .section-title {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $dark-color;
+  }
+  
+  .time-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+    .time-format-toggle {
+      font-size: 0.85rem;
+      margin: 0;
+    }
+  }
+  
+  .selected-date-time {
+    .selected-date-badge {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      background-color: rgba($primary-color, 0.1); // Cambiado de $selected-color a $primary-color
+      border: 1px solid rgba($primary-color, 0.3);
+      border-radius: $border-radius;
+      color: darken($primary-color, 10%);
+      font-weight: 500;
+    }
+  }
+}
+
+// Variables
+$primary-color: #4f46e5;
+$secondary-color: #6b7280;
+$success-color: #10b981;
+$danger-color: #ef4444;
+$warning-color: #f59e0b;
+$light-color: #f3f4f6;
+$dark-color: #1f2937;
+$border-color: #e5e7eb;
+$border-radius: 0.375rem;
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+// Colores para el calendario
+$disponible-color: #10b981;
+$pocas-color: #f59e0b;
+$lleno-color: #ef4444;
+$selected-color: #4f46e5;
+
+// Estilos para el calendario - Diseño moderno y elegante
+.calendar-wrapper {
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background-color: white;
+    border-bottom: 1px solid $border-color;
+    
+    h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: $dark-color;
+    }
+    
+    .calendar-nav {
+      display: flex;
+      gap: 0.5rem;
+      
+      .calendar-nav-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid $border-color;
+        color: $dark-color;
+        transition: all 0.2s ease;
+        padding: 0;
+        
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+          border-color: $primary-color;
+          transform: translateY(-2px);
+          box-shadow: 0 2px 8px rgba($primary-color, 0.3);
+        }
+      }
+    }
+  }
+  
+  // Nuevo estilo basado en tabla para mejor alineación
+  .calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+    table-layout: fixed;
+    margin: 0.5rem 0;
+    
+    th {
+      padding: 0.75rem 0;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: $secondary-color;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+    
+    td {
+      position: relative;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      padding: 0;
+      
+      .day-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      
+      .day-number {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      
+      .day-status {
+        position: absolute;
+        bottom: 2px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        
+        &.disponible {
+          background-color: $disponible-color;
+        }
+        
+        &.pocas {
+          background-color: $pocas-color;
+        }
+        
+        &.lleno {
+          background-color: $lleno-color;
+        }
+      }
+      
+      &:hover:not(.other-month, .past, .sunday) {
+        background-color: rgba($primary-color, 0.08);
+        border-color: rgba($primary-color, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      &.selected {
+        background-color: $primary-color;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+        transform: translateY(-2px);
+        
+        .day-status {
+          background-color: white;
+        }
+      }
+      
+      &.today {
+        border: 2px solid $primary-color;
+        font-weight: 600;
+        color: $primary-color;
+      }
+      
+      &.past {
+        color: #d1d5db;
+        background-color: #f8f9fa;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+      
+      &.sunday {
+        background-color: rgba($danger-color, 0.08);
+        color: $danger-color;
+        cursor: not-allowed;
+      }
+      
+      &.other-month {
+        color: #d1d5db;
+        background-color: #fafafa;
+        cursor: default;
+      }
+      
+      &.disponible:not(.other-month, .past, .sunday) {
+        border-color: rgba($disponible-color, 0.2);
+      }
+      
+      &.pocas:not(.other-month, .past, .sunday) {
+        border-color: rgba($pocas-color, 0.2);
+      }
+      
+      &.lleno:not(.other-month, .past, .sunday) {
+        border-color: rgba($lleno-color, 0.2);
+      }
+    }
+  }
+  
+  .calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-top: 1px solid $border-color;
+    background-color: $light-color;
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: $secondary-color;
+      
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        
+        &.disponible {
+          background-color: $disponible-color;
+        }
+        
+        &.pocas {
+          background-color: $pocas-color;
+        }
+        
+        &.lleno {
+          background-color: $lleno-color;
+        }
+      }
+    }
+  }
+}
+
+// Estilos responsivos
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    .calendar-table {
+      td {
+        height: 36px;
+        
+        .day-number {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .calendar-wrapper {
+    .calendar-header {
+      padding: 1rem;
+      
+      h4 {
+        font-size: 1rem;
+      }
+      
+      .calendar-nav {
+        .calendar-nav-btn {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+    
+    .calendar-table {
+      th {
+        padding: 0.5rem 0;
+        font-size: 0.75rem;
+      }
+      
+      td {
+        height: 32px;
+        
+        .day-number {
+          font-size: 0.8rem;
+        }
+      }
+    }
+    
+    .calendar-legend {
+      padding: 0.75rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      
+      .legend-item {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+
+// Estilos para los horarios
+.time-slots-container {
+  margin-top: 1rem;
+  
+  .time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    
+    .time-slot {
+      padding: 0.75rem 0.5rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      font-size: 0.85rem;
+      
+      &:hover:not(.ocupado, .lunch-time) {
+        border-color: $primary-color; // Cambiado de $selected-color a $primary-color
+        background-color: rgba($primary-color, 0.05);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      &.selected {
+        background-color: $primary-color; // Cambiado de $selected-color a $primary-color
+        color: white;
+        border-color: $primary-color;
+        box-shadow: 0 2px 4px rgba($primary-color, 0.3);
+      }
+      
+      &.ocupado {
+        background-color: rgba($secondary-color, 0.1);
+        color: $secondary-color;
+        cursor: not-allowed;
+        
+        .ocupado-badge {
+          font-size: 0.7rem;
+          color: $danger-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 0.25rem;
+          font-weight: 500;
+        }
+      }
+      
+      &.lunch-time {
+        background-color: rgba($warning-color, 0.1);
+        color: $warning-color;
+        cursor: not-allowed;
+        
+        .lunch-badge {
+          font-size: 0.7rem;
+          display: block;
+          margin-top: 0.25rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  .no-slots-available {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba($warning-color, 0.05);
+    border-radius: $border-radius;
+    border: 1px dashed rgba($warning-color, 0.3);
+    
+    button {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+// Estilos para los servicios - Con scroll interno
+.servicios-container {
+  .servicios-grid {
+    display: grid;
+    gap: 1rem;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    
+    .servicio-card {
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+      
+      &.selected {
+        border-color: $success-color;
+        box-shadow: 0 0 0 2px rgba($success-color, 0.2);
+      }
+      
+      .servicio-image {
+        height: 140px;
+        overflow: hidden;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 30%;
+          background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        }
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+      
+      &:hover .servicio-image img {
+        transform: scale(1.05);
+      }
+      
+      .servicio-info {
+        padding: 1rem;
+        flex: 1;
+        
+        h5 {
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        
+        .servicio-descripcion {
+          font-size: 0.85rem;
+          color: $secondary-color;
+          margin-bottom: 0.75rem;
+          display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+line-clamp: 3; // 🔧 Esta es la sugerida por el warning
+overflow: hidden;
+
+        }
+        
+        .servicio-details {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.85rem;
+          margin-bottom: 0.75rem;
+          
+          .servicio-duracion {
+            color: $secondary-color;
+            display: flex;
+            align-items: center;
+            
+            &::before {
+              content: '⏱️';
+              margin-right: 0.25rem;
+              font-size: 0.9rem;
+            }
+          }
+          
+          .servicio-precio {
+            font-weight: 600;
+            color: $success-color;
+          }
+        }
+      }
+      
+      button {
+        margin: 0 1rem 1rem;
+        font-size: 0.85rem;
+        padding: 0.5rem;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+}
+
+// Estilos para los clientes - Con scroll interno
+.cliente-container {
+  .clientes-list {
+    margin-top: 1rem;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    
+    .cliente-card {
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      padding: 1.25rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background-color: white;
+      position: relative;
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+      
+      &.selected {
+        border-color: $success-color;
+        background-color: rgba($success-color, 0.05);
+      }
+      
+      .cliente-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: $light-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $primary-color;
+        margin-bottom: 1rem;
+        border: 2px solid $primary-color;
+        overflow: hidden;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      .cliente-info {
+        width: 100%;
+        
+        h5 {
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        
+        .cliente-telefono {
+          color: $secondary-color;
+          margin-bottom: 0.5rem;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          &::before {
+            content: '📞';
+            margin-right: 0.25rem;
+          }
+        }
+        
+        .cliente-mascotas {
+          font-size: 0.85rem;
+          color: $secondary-color;
+          margin-bottom: 0;
+          
+          &::before {
+            content: '🐾';
+            margin-right: 0.25rem;
+          }
+        }
+      }
+      
+      .cliente-selected {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+    }
+  }
+}
+
+// Estilos para las mascotas - Con scroll interno y fotos destacadas
+.mascota-container {
+  .mascotas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    
+    .mascota-card {
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background-color: white;
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+      
+      &.selected {
+        border-color: $success-color;
+        box-shadow: 0 0 0 2px rgba($success-color, 0.2);
+      }
+      
+      .mascota-image {
+        width: 100%;
+        height: 140px;
+        overflow: hidden;
+        position: relative;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        
+        .mascota-placeholder {
+          width: 100%;
+          height: 100%;
+          background-color: $light-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $secondary-color;
+          font-size: 1.5rem;
+        }
+      }
+      
+      &:hover .mascota-image img {
+        transform: scale(1.05);
+      }
+      
+      .mascota-info {
+        padding: 1rem;
+        text-align: center;
+        
+        h5 {
+          margin-bottom: 0.25rem;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        
+        .mascota-details {
+          font-size: 0.85rem;
+          color: $secondary-color;
+        }
+      }
+      
+      .mascota-selected {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: white;
+        border-radius: 50%;
+        padding: 0.25rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+// Estilos para el resumen de la cita
+.resumen-cita {
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: $dark-color;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $light-color;
+  }
+  
+  .resumen-section {
+    margin-bottom: 1.25rem;
+    
+    h5 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: $dark-color;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 0.5rem;
+    }
+    
+    .resumen-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      
+      svg {
+        color: $primary-color;
+        margin-right: 0.5rem;
+      }
+    }
+    
+    .resumen-servicio {
+      padding: 0.75rem;
+      background-color: $light-color;
+      border-radius: $border-radius;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      
+      .text-success {
+        color: $success-color !important;
+        font-weight: 600;
+      }
+    }
+    
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .resumen-totales {
+    background-color: $light-color;
+    padding: 1rem;
+    border-radius: $border-radius;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    
+    .text-success {
+      color: $success-color !important;
+      font-weight: 600;
+    }
+  }
+  
+  .resumen-footer {
+    margin-top: 1.5rem;
+    
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-size: 0.85rem;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Estilos responsivos
+@media (max-width: 768px) {
+  .progress-steps {
+    .step-label {
+      font-size: 0.75rem;
+    }
+    
+    .step-circle {
+      width: 30px;
+      height: 30px;
+      font-size: 0.75rem;
+    }
+  }
+  
+  .servicios-container {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .mascota-container {
+    .mascotas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .time-slots-container {
+    .time-slots-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .mascota-container {
+    .mascotas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .time-slots-container {
+    .time-slots-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

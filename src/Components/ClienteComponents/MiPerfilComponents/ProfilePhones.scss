@@ -1,0 +1,42 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.tc-profile-card-header {
+  background: linear-gradient(to right, rgba($teocat-green, 0.05), rgba($teocat-blue, 0.05));
+  border-bottom: 1px solid rgba($teocat-green, 0.1);
+  padding: 1.25rem 1.5rem;
+  
+  h4 {
+    color: $teocat-brown;
+    font-weight: 700;
+    font-size: 1.35rem;
+  }
+}
+
+.tc-phone-item {
+  padding: 1rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($teocat-green, 0.05);
+  }
+  
+  .tc-phone-text {
+    font-size: 1.05rem;
+  }
+  
+  .tc-phone-actions {
+    .btn {
+      padding: 0.35rem 0.5rem;
+      
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

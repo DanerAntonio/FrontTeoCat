@@ -1,0 +1,455 @@
+// Colores corporativos de Teo/Cat (versión neón suavizada)
+$primary-color: #00b8e0; // Azul turquesa neón suavizado
+$secondary-color: #8fd82a; // Verde lima neón suavizado
+$accent-color: #f5a623; // Naranja/ámbar neón suavizado
+$dark-color: #4a3631; // Marrón oscuro suavizado
+$white-color: #FFFFFF; // Blanco
+$light-bg: #f8fcff; // Fondo claro derivado del azul
+$danger-color: #f05252; // Rojo neón suavizado para acciones peligrosas
+$info-color: #3f83f8; // Azul para acciones informativas
+$warning-color: #f5a623; // Ámbar para advertencias
+$success-color: #8fd82a; // Verde para éxito
+$purple-color: #9061f9; // Púrpura neón suavizado para imprimir
+$secondary-gray: #64748B; // Gris para acciones secundarias
+
+// Variables de diseño
+$border-radius: 0.375rem;
+$box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $transition;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+  }
+  
+  &:hover::before {
+    transform: scale(2);
+  }
+  
+  svg {
+    position: relative;
+    z-index: 2;
+    transition: $transition;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Animaciones de mascotas para tooltips
+@mixin pet-tooltip($type) {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    @if $type == 'paw' {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23FFFFFF'%3E%3Cpath d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z'/%3E%3C/svg%3E");
+    }
+    @else if $type == 'bone' {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%23FFFFFF'%3E%3Cpath d='M153.7 144.8c6.9 16.3 20.6 31.2 38.3 31.2H384c17.7 0 31.4-14.9 38.3-31.2C434.4 116.1 462.9 96 496 96c44.2 0 80 35.8 80 80c0 30.4-17 56.9-42 70.4c-3.6 1.9-6 5.5-6 9.6s2.4 7.7 6 9.6c25 13.5 42 40 42 70.4c0 44.2-35.8 80-80 80c-33.1 0-61.6-20.1-73.7-48.8C415.4 350.9 401.7 336 384 336H192c-17.7 0-31.4 14.9-38.3 31.2C141.6 395.9 113.1 416 80 416c-44.2 0-80-35.8-80-80c0-30.4 17-56.9 42-70.4c3.6-1.9 6-5.5 6-9.6s-2.4-7.7-6-9.6C17 232.9 0 206.4 0 176c0-44.2 35.8-80 80-80c33.1 0 61.6 20.1 73.7 48.8z'/%3E%3C/svg%3E");
+    }
+    @else if $type == 'cat' {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%23FFFFFF'%3E%3Cpath d='M320 192h17.1c22.1 38.3 63.5 64 110.9 64c11 0 21.8-1.4 32-4v4 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V339.2L280 448h56c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-53 0-96-43-96-96V192.5c0-16.1-12-29.8-28-31.8l-7.9-1c-17.5-2.2-30-18.2-27.8-35.7s18.2-30 35.7-27.8l7.9 1c48 6 84.1 46.8 84.1 95.3v85.3c34.4-51.7 93.2-85.8 160-85.8zm160 26.5v0c-10 3.5-20.8 5.5-32 5.5c-28.4 0-54-12.4-71.6-32h0c-3.7-4.1-7-8.5-9.9-13.2C357.3 164 352 146.6 352 128v0V32 12 10.7C352 4.8 356.7 .1 362.6 0h.2c3.3 0 6.4 1.6 8.4 4.2l0 .1L384 21.3l27.2 36.3L416 64h64l4.8-6.4L512 21.3 524.8 4.3l0-.1c2-2.6 5.1-4.2 8.4-4.2h.2C539.3 .1 544 4.8 544 10.7V12 32v96c0 17.3-4.6 33.6-12.6 47.6c-11.3 19.8-29.6 35.2-51.4 42.9zM432 128a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm48 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z'/%3E%3C/svg%3E");
+    }
+    @else if $type == 'dog' {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%23FFFFFF'%3E%3Cpath d='M309.6 158.5L332.7 19.8C334.6 8.4 344.5 0 356.1 0c7.5 0 14.5 3.5 19 9.5L392 32h52.1c12.7 0 24.9 5.1 33.9 14.1L496 64h56c13.3 0 24 10.7 24 24v24c0 44.2-35.8 80-80 80H464 448 426.7l-5.1 30.5-112-64zM416 256.1L416 480c0 17.7-14.3 32-32 32H352c-17.7 0-32-14.3-32-32V364.8c-24 12.3-51.2 19.2-80 19.2s-56-6.9-80-19.2V480c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V249.8c-28.8-10.9-51.4-35.3-59.2-66.5L1 167.8c-4.3-17.1 6.1-34.5 23.3-38.8s34.5 6.1 38.8 23.3l3.9 15.5C70.5 182 83.3 192 98 192h30 16H303.8L416 256.1zM464 80a16 16 0 1 0 -32 0 16 16 0 1 0 32 0z'/%3E%3C/svg%3E");
+    }
+  }
+}
+
+// Estilos principales
+.table-actions-container {
+  @include flex(row, center, center);
+  gap: 0.5rem;
+  
+  .action-button {
+    @include button-base;
+    color: $white-color;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    // Estilos específicos para cada tipo de botón con animaciones personalizadas
+    &.btn-primary {
+      background-color: $primary-color;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($primary-color, 5%);
+        box-shadow: 0 2px 8px rgba($primary-color, 0.4);
+        
+        svg {
+          animation: edit-pencil 1s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+    
+    &.btn-info {
+      background-color: $info-color;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($info-color, 5%);
+        box-shadow: 0 2px 8px rgba($info-color, 0.4);
+        
+        svg {
+          animation: eye-blink 2s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+    
+    &.btn-success {
+      background-color: $success-color;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($success-color, 5%);
+        box-shadow: 0 2px 8px rgba($success-color, 0.4);
+        
+        svg {
+          animation: check-bounce 1s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+    
+    &.btn-danger {
+      background-color: $danger-color;
+      position: relative;
+      
+      // Tapa del bote de basura
+      &::after {
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 2px;
+        background-color: $white-color;
+        border-radius: 1px;
+        transition: transform 0.3s ease, top 0.3s ease;
+        transform-origin: center;
+      }
+      
+      &:hover {
+        background-color: darken($danger-color, 5%);
+        box-shadow: 0 2px 8px rgba($danger-color, 0.4);
+        
+        &::after {
+          transform: translateX(-50%) rotateZ(-10deg);
+          top: 5px;
+        }
+        
+        svg {
+          animation: trash-shake 0.5s ease infinite;
+        }
+      }
+      
+      &:active {
+        &::after {
+          transform: translateX(-50%) rotateZ(-20deg);
+          top: 3px;
+        }
+        
+        svg {
+          animation: none;
+        }
+      }
+    }
+    
+    &.btn-warning {
+      background-color: $warning-color;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($warning-color, 5%);
+        box-shadow: 0 2px 8px rgba($warning-color, 0.4);
+        
+        svg {
+          animation: toggle-flip 1s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+    
+    &.btn-secondary {
+      background-color: $secondary-gray;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($secondary-gray, 5%);
+        box-shadow: 0 2px 8px rgba($secondary-gray, 0.4);
+        
+        svg {
+          animation: cancel-pulse 1s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+    
+    &.btn-purple {
+      background-color: $purple-color;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover {
+        background-color: darken($purple-color, 5%);
+        box-shadow: 0 2px 8px rgba($purple-color, 0.4);
+        
+        svg {
+          animation: printer-print 1s ease infinite;
+        }
+      }
+      
+      &:active svg {
+        animation: none;
+      }
+    }
+  }
+}
+
+// Personalización de tooltips de Bootstrap
+.tooltip {
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(5px);
+  
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .tooltip-inner {
+    background-color: $dark-color;
+    color: $white-color;
+    border-radius: $border-radius;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    
+    // Añadir iconos de mascotas a los tooltips según la acción
+    &[data-action="view"] {
+      @include pet-tooltip('cat');
+    }
+    
+    &[data-action="edit"] {
+      @include pet-tooltip('dog');
+    }
+    
+    &[data-action="delete"] {
+      @include pet-tooltip('bone');
+    }
+    
+    &[data-action="toggleStatus"],
+    &[data-action="approve"],
+    &[data-action="reject"],
+    &[data-action="duplicate"],
+    &[data-action="archive"],
+    &[data-action="print"],
+    &[data-action="cancel"],
+    &[data-action="return"] {
+      @include pet-tooltip('paw');
+    }
+  }
+  
+  .tooltip-arrow::before {
+    border-top-color: $dark-color;
+  }
+}
+
+// Keyframes para animaciones de botones
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes edit-pencil {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-5deg) translateY(-1px);
+  }
+  75% {
+    transform: rotate(5deg) translateY(-1px);
+  }
+}
+
+@keyframes eye-blink {
+  0%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8, 0.2);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+@keyframes trash-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes toggle-flip {
+  0% {
+    transform: rotateY(0);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes check-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes cancel-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(1.2) rotate(15deg);
+  }
+}
+
+@keyframes printer-print {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+

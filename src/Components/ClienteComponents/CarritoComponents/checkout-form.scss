@@ -1,0 +1,42 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.form-label {
+  color: $teocat-brown;
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  &:focus {
+    border-color: $teocat-green;
+    box-shadow: 0 0 0 0.25rem rgba($teocat-green, 0.25);
+  }
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  color: $teocat-brown;
+}
+
+.client-info-summary {
+  border-color: rgba($teocat-green, 0.2);
+  background-color: rgba($teocat-green, 0.05) !important;
+  
+  h6 {
+    color: $teocat-brown;
+  }
+}
+
+.edit-field-btn {
+  color: $teocat-green;
+  
+  &:hover {
+    color: color.adjust($teocat-green, $lightness: -10%);
+  }
+}
+

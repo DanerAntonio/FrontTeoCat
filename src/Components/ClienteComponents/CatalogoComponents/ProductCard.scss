@@ -1,0 +1,134 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.product-card-container {
+  height: 100%;
+  display: flex;
+  
+  // Esto solucionará el problema del "0" que aparece arriba de las imágenes
+  > :first-child:not(.product-card) {
+    display: none;
+  }
+}
+
+.product-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-5px);
+  }
+
+  .card-img-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    
+    .product-image {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      
+      &.zoomed {
+        transform: scale(1.1);
+      }
+    }
+    
+    .quick-actions {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      transition: bottom 0.3s ease;
+      
+      &.visible {
+        bottom: 0;
+      }
+      
+      .quick-action-btn {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid $teocat-brown;
+        color: $teocat-brown;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        
+        &:hover {
+          background-color: $teocat-brown;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .product-title {
+    color: $teocat-brown;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    height: 48px;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .product-price {
+    display: flex;
+    flex-direction: column;
+    
+    .current-price {
+      font-weight: 700;
+      color: $teocat-green;
+      font-size: 1.1rem;
+    }
+  }
+
+  .btn-brown {
+    background-color: $teocat-brown;
+    border-color: $teocat-brown;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: color.adjust($teocat-brown, $lightness: -10%);
+      border-color: color.adjust($teocat-brown, $lightness: -10%);
+      color: white;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 767.98px) {
+  .product-card {
+    .card-img-container {
+      .quick-actions {
+        display: none;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+@import "../../../src//Components//AdminComponents/Variables.scss"; // Ajusta la ruta según tu estructura de proyecto
+
+.confirm-dialog {
+  z-index: $zindex-modal;
+}
+
+.confirm-dialog .modal-content {
+  border: none;
+  box-shadow: $box-shadow;
+}
+
+.confirm-dialog .modal-header {
+  border-bottom: none;
+  padding: $spacing-md $spacing-lg;
+}
+
+.confirm-dialog .modal-body {
+  padding: $spacing-lg;
+}
+
+.confirm-dialog .modal-footer {
+  border-top: none;
+  padding: $spacing-md $spacing-lg;
+}
+
+.confirm-dialog .btn {
+  font-weight: $font-weight-bold;
+  padding: $spacing-sm $spacing-lg;
+  transition: $transition-base;
+}
+
+.confirm-dialog .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: $box-shadow-sm;
+}
+
+.confirm-dialog .btn:active {
+  transform: translateY(0);
+}

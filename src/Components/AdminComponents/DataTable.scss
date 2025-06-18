@@ -1,0 +1,624 @@
+// Colores corporativos de Teo/Cat (versión neón suavizada)
+$primary-color: #00b8e0; // Azul turquesa neón suavizado
+$secondary-color: #8fd82a; // Verde lima neón suavizado
+$accent-color: #f5a623; // Naranja/ámbar neón suavizado
+$dark-color: #4a3631; // Marrón oscuro suavizado
+$white-color: #FFFFFF; // Blanco
+$light-bg: #f8fcff; // Fondo claro derivado del azul
+$hover-color: rgba($primary-color, 0.08);
+$border-color: #edf2f7;
+$text-color: #3a3a3a;
+$text-muted: #718096;
+
+// Variables de diseño
+$border-radius: 0.5rem;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $transition;
+  border: none;
+  outline: none;
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.25);
+  }
+}
+
+// Animaciones de mascotas
+@mixin pet-icon($type) {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right: 0.5rem;
+  
+  @if $type == 'paw' {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%238fd82a'%3E%3Cpath d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z'/%3E%3C/svg%3E");
+  }
+  @else if $type == 'bone' {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%2300b8e0'%3E%3Cpath d='M153.7 144.8c6.9 16.3 20.6 31.2 38.3 31.2H384c17.7 0 31.4-14.9 38.3-31.2C434.4 116.1 462.9 96 496 96c44.2 0 80 35.8 80 80c0 30.4-17 56.9-42 70.4c-3.6 1.9-6 5.5-6 9.6s2.4 7.7 6 9.6c25 13.5 42 40 42 70.4c0 44.2-35.8 80-80 80c-33.1 0-61.6-20.1-73.7-48.8C415.4 350.9 401.7 336 384 336H192c-17.7 0-31.4 14.9-38.3 31.2C141.6 395.9 113.1 416 80 416c-44.2 0-80-35.8-80-80c0-30.4 17-56.9 42-70.4c3.6-1.9 6-5.5 6-9.6s-2.4-7.7-6-9.6C17 232.9 0 206.4 0 176c0-44.2 35.8-80 80-80c33.1 0 61.6 20.1 73.7 48.8z'/%3E%3C/svg%3E");
+  }
+  @else if $type == 'cat' {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%23f5a623'%3E%3Cpath d='M320 192h17.1c22.1 38.3 63.5 64 110.9 64c11 0 21.8-1.4 32-4v4 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V339.2L280 448h56c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-53 0-96-43-96-96V192.5c0-16.1-12-29.8-28-31.8l-7.9-1c-17.5-2.2-30-18.2-27.8-35.7s18.2-30 35.7-27.8l7.9 1c48 6 84.1 46.8 84.1 95.3v85.3c34.4-51.7 93.2-85.8 160-85.8zm160 26.5v0c-10 3.5-20.8 5.5-32 5.5c-28.4 0-54-12.4-71.6-32h0c-3.7-4.1-7-8.5-9.9-13.2C357.3 164 352 146.6 352 128v0V32 12 10.7C352 4.8 356.7 .1 362.6 0h.2c3.3 0 6.4 1.6 8.4 4.2l0 .1L384 21.3l27.2 36.3L416 64h64l4.8-6.4L512 21.3 524.8 4.3l0-.1c2-2.6 5.1-4.2 8.4-4.2h.2C539.3 .1 544 4.8 544 10.7V12 32v96c0 17.3-4.6 33.6-12.6 47.6c-11.3 19.8-29.6 35.2-51.4 42.9zM432 128a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm48 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z'/%3E%3C/svg%3E");
+  }
+  @else if $type == 'dog' {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' fill='%234a3631'%3E%3Cpath d='M309.6 158.5L332.7 19.8C334.6 8.4 344.5 0 356.1 0c7.5 0 14.5 3.5 19 9.5L392 32h52.1c12.7 0 24.9 5.1 33.9 14.1L496 64h56c13.3 0 24 10.7 24 24v24c0 44.2-35.8 80-80 80H464 448 426.7l-5.1 30.5-112-64zM416 256.1L416 480c0 17.7-14.3 32-32 32H352c-17.7 0-32-14.3-32-32V364.8c-24 12.3-51.2 19.2-80 19.2s-56-6.9-80-19.2V480c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V249.8c-28.8-10.9-51.4-35.3-59.2-66.5L1 167.8c-4.3-17.1 6.1-34.5 23.3-38.8s34.5 6.1 38.8 23.3l3.9 15.5C70.5 182 83.3 192 98 192h30 16H303.8L416 256.1zM464 80a16 16 0 1 0 -32 0 16 16 0 1 0 32 0z'/%3E%3C/svg%3E");
+  }
+}
+
+// DataTable Container
+.data-table-container {
+  background-color: $white-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid $border-color;
+  transition: $transition;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      rgba(255, 0, 0, 0.6), 
+      rgba(255, 165, 0, 0.6), 
+      rgba(255, 255, 0, 0.6), 
+      rgba(0, 255, 0, 0.6), 
+      rgba(0, 0, 255, 0.6), 
+      rgba(75, 0, 130, 0.6), 
+      rgba(238, 130, 238, 0.6)
+    );
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  &:hover {
+    box-shadow: 0 4px 15px rgba($primary-color, 0.15);
+  }
+  
+  .data-table-body {
+    width: 100%;
+  }
+  
+  // Toolbar
+  .data-table-toolbar {
+    padding: 1.25rem;
+    background: $light-bg;
+    border-bottom: 1px solid $border-color;
+    position: relative;
+    
+    &::after {
+      @include pet-icon('paw');
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 24px;
+      height: 24px;
+      opacity: 0.3;
+      margin: 0;
+    }
+    
+    .data-table-row {
+      @include flex(row, space-between, center, wrap);
+      gap: 1rem;
+      
+      .data-table-search {
+        flex: 1;
+        margin-bottom: 0.5rem;
+        
+        @media (min-width: 768px) {
+          margin-bottom: 0;
+          
+          &.with-actions {
+            flex: 0 0 50%;
+          }
+        }
+        
+        .search-input-group {
+          @include flex(row, flex-start, center);
+          position: relative;
+          
+          .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            padding-left: 2.5rem; // Cambiado: el icono ahora va a la izquierda
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            font-size: 0.875rem;
+            transition: $transition;
+            
+            &:focus {
+              outline: none;
+              border-color: $primary-color;
+              box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+            }
+            
+            &::placeholder {
+              color: $text-muted;
+            }
+          }
+          
+          .search-icon {
+            position: absolute;
+            left: 0.75rem; // Cambiado: el icono ahora va a la izquierda
+            color: $text-muted;
+            pointer-events: none;
+            transition: $transition;
+          }
+          
+          &:focus-within .search-icon {
+            color: $primary-color;
+            animation: wiggle 0.5s ease;
+          }
+        }
+      }
+      
+      .data-table-actions {
+        @media (min-width: 768px) {
+          flex: 0 0 auto;
+        }
+        
+        .actions-container {
+          @include flex(row, flex-end, center);
+          gap: 0.75rem;
+          
+          .btn-add {
+            @include button-base;
+            background-color: $secondary-color;
+            color: $white-color;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba($secondary-color, 0.3);
+            
+            &:hover {
+              background-color: darken($secondary-color, 5%);
+              transform: translateY(-1px);
+              box-shadow: 0 4px 8px rgba($secondary-color, 0.4);
+            }
+            
+            &:active {
+              transform: translateY(0);
+            }
+          }
+          
+          .export-buttons {
+            @include flex(row, flex-start, center);
+            gap: 0.5rem;
+            
+            .btn-export {
+              @include button-base;
+              position: relative;
+              overflow: hidden;
+              
+              &.btn-excel {
+                background-color: $white-color;
+                color: $secondary-color;
+                border: 1px solid $secondary-color;
+                
+                &::before {
+                  @include pet-icon('dog');
+                  width: 16px;
+                  height: 16px;
+                  margin-right: 0.25rem;
+                  opacity: 0.8;
+                  transition: $transition;
+                }
+                
+                &:hover {
+                  background-color: rgba($secondary-color, 0.1);
+                  transform: translateY(-1px);
+                  
+                  &::before {
+                    transform: rotate(10deg);
+                  }
+                }
+                
+                &.downloading {
+                  animation: pulse-excel 1s infinite;
+                }
+              }
+              
+              &.btn-pdf {
+                background-color: $white-color;
+                color: $primary-color;
+                border: 1px solid $primary-color;
+                
+                &::before {
+                  @include pet-icon('cat');
+                  width: 16px;
+                  height: 16px;
+                  margin-right: 0.25rem;
+                  opacity: 0.8;
+                  transition: $transition;
+                }
+                
+                &:hover {
+                  background-color: rgba($primary-color, 0.1);
+                  transform: translateY(-1px);
+                  
+                  &::before {
+                    transform: rotate(-10deg);
+                  }
+                }
+                
+                &.downloading {
+                  animation: pulse-pdf 1s infinite;
+                }
+              }
+              
+              .export-text {
+                @media (max-width: 576px) {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Table
+  .data-table-wrapper {
+    overflow-x: auto;
+    position: relative;
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: $light-bg;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary-color, 0.5);
+      border-radius: 4px;
+      
+      &:hover {
+        background: $primary-color;
+      }
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      
+      thead {
+        background-color: $light-bg;
+        
+        th {
+          padding: 1rem;
+          font-weight: 600;
+          text-align: left;
+          color: $dark-color;
+          border-bottom: 1px solid $border-color;
+          font-size: 0.875rem;
+          white-space: nowrap;
+          transition: $transition;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: $primary-color;
+            transition: width 0.3s ease;
+          }
+          
+          &:hover::before {
+            width: 100%;
+          }
+          
+          &.actions-column {
+            text-align: center;
+          }
+        }
+      }
+      
+      tbody {
+        tr {
+          border-bottom: 1px solid $border-color;
+          transition: $transition;
+          
+          &:nth-child(even) {
+            background-color: rgba($light-bg, 0.3);
+          }
+          
+          &:hover {
+            background-color: $hover-color;
+          }
+          
+          &:last-child {
+            border-bottom: none;
+          }
+          
+          td {
+            padding: 1rem;
+            color: $text-color;
+            font-size: 0.875rem;
+            transition: $transition;
+            
+            &.actions-column {
+              text-align: center;
+            }
+          }
+          
+          &.loading-row, &.empty-row {
+            td {
+              padding: 3rem 1rem;
+            }
+          }
+          
+          // Animación para la extracción de datos
+          &.extracting {
+            animation: extract-row 0.5s forwards;
+          }
+        }
+        
+        .loading-spinner {
+          @include flex(column, center, center);
+          
+          .spinner {
+            width: 2.5rem;
+            height: 2.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            
+            &::before {
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              border: 3px solid transparent;
+              border-top-color: $primary-color;
+              border-right-color: $secondary-color;
+              border-bottom-color: $accent-color;
+              animation: spin 1.5s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+            }
+          }
+          
+          p {
+            color: $text-muted;
+            margin: 0;
+            animation: fadeIn 0.5s ease;
+            
+            &::before {
+              @include pet-icon('paw');
+              animation: bounce 1s infinite;
+            }
+          }
+        }
+        
+        .empty-row p {
+          text-align: center;
+          color: $text-muted;
+          margin: 0;
+          animation: fadeIn 0.5s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          &::before {
+            @include pet-icon('bone');
+            animation: rotate 3s infinite linear;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    
+    // Partículas de datos para la animación de extracción
+    .data-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: $primary-color;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.8;
+      
+      &.excel {
+        background-color: $secondary-color;
+      }
+      
+      &.pdf {
+        background-color: $primary-color;
+      }
+    }
+  }
+  
+  // Pagination
+  .data-table-pagination {
+    padding: 1rem;
+    background: $light-bg;
+    border-top: 1px solid $border-color;
+    
+    .pagination-container {
+      @include flex(row, space-between, center, wrap);
+      gap: 1rem;
+      
+      .pagination-info {
+        color: $text-muted;
+        font-size: 0.75rem;
+        
+        &::before {
+          @include pet-icon('paw');
+          width: 16px;
+          height: 16px;
+          opacity: 0.5;
+        }
+      }
+      
+      .pagination-nav {
+        .pagination {
+          @include flex(row, flex-start, center);
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          
+          .page-item {
+            margin: 0 0.125rem;
+            
+            &.active .page-link {
+              background: $primary-color;
+              color: $white-color;
+              border-color: transparent;
+              box-shadow: 0 2px 5px rgba($primary-color, 0.3);
+            }
+            
+            &.disabled .page-link {
+              color: $text-muted;
+              pointer-events: none;
+              background-color: transparent;
+            }
+            
+            .page-link {
+              @include button-base;
+              padding: 0.25rem 0.5rem;
+              min-width: 2rem;
+              font-size: 0.75rem;
+              background-color: $white-color;
+              color: $text-color;
+              border: 1px solid $border-color;
+              position: relative;
+              
+              &:hover {
+                background-color: $light-bg;
+                transform: translateY(-1px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Keyframes
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-excel {
+  0% {
+    box-shadow: 0 0 0 0 rgba($secondary-color, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($secondary-color, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($secondary-color, 0);
+  }
+}
+
+@keyframes pulse-pdf {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary-color, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0);
+  }
+}
+
+@keyframes extract-row {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+}
+
+@keyframes float-to-button {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+

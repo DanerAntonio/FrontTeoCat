@@ -1,0 +1,266 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.teocat-cta {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  
+  &__wrapper {
+    background: linear-gradient(to right, rgba($teocat-brown, 0.9), rgba($teocat-brown, 0.8)), 
+                url('https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80&w=1920') center center/cover no-repeat;
+    border-radius: 1rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    
+    // EPM-inspired top gradient border
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, $teocat-green, $teocat-blue);
+    }
+  }
+  
+  &__content {
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
+  
+  // EPM-inspired accent line
+  &__accent-line {
+    width: 80px;
+    height: 4px;
+    background-color: $teocat-green;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  &__description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  &__button {
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    // EPM-inspired button hover effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+      z-index: 0;
+    }
+    
+    &:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+    
+    i {
+      position: relative;
+      z-index: 1;
+    }
+    
+    span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    &--light {
+      color: $teocat-brown;
+      
+      &:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    }
+    
+    &--primary {
+      background-color: $teocat-green;
+      border-color: $teocat-green;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        background-color: color.adjust($teocat-green, $lightness: -10%);
+        border-color: color.adjust($teocat-green, $lightness: -10%);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  &__image-container {
+    position: relative;
+    perspective: 1000px;
+  }
+  
+  // EPM-inspired image frame
+  &__image-frame {
+    position: relative;
+    border-radius: 0.5rem;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: rotate(3deg);
+    transition: transform 0.5s ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid rgba($teocat-green, 0.3);
+      border-radius: 0.5rem;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    &:hover {
+      transform: rotate(0deg);
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    transition: all 0.5s ease;
+    
+    // EPM-inspired image zoom effect
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+  
+  &__image-badge {
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    background-color: $teocat-green;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: rotate(10deg);
+    z-index: 3;
+    
+    // EPM-inspired badge shine effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: skewX(-25deg);
+      animation: teocat-badge-shine 3s infinite;
+    }
+  }
+}
+
+@keyframes teocat-badge-shine {
+  0% {
+    left: -100%;
+  }
+  20%, 100% {
+    left: 150%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .teocat-cta {
+    &__wrapper {
+      padding: 2rem;
+    }
+    
+    &__content {
+      text-align: center;
+      
+      .teocat-cta__accent-line {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    &__title {
+      font-size: 2rem;
+    }
+    
+    &__description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &__buttons {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .teocat-cta {
+    &__wrapper {
+      padding: 1.5rem;
+    }
+    
+    &__title {
+      font-size: 1.75rem;
+    }
+    
+    &__description {
+      font-size: 1rem;
+    }
+    
+    &__button {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+    }
+  }
+}

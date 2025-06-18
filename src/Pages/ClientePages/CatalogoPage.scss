@@ -1,0 +1,237 @@
+// Variables
+$teocat-brown: #5a3921;
+$teocat-green: #7ab51d;
+$teocat-blue: #00b2e3;
+
+// Importar el módulo de color de Sass
+@use "sass:color";
+
+.catalogo-page {
+  .catalog-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  
+  .page-title {
+    color: $teocat-brown;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    
+    .search-input {
+      border-right: none;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        box-shadow: none;
+        border-color: $teocat-green;
+      }
+    }
+    
+    .search-button {
+      background-color: $teocat-green;
+      border-color: $teocat-green;
+      transition: all 0.3s ease;
+      
+      &:hover, &:focus {
+        background-color: color.adjust($teocat-green, $lightness: -10%);
+        border-color: color.adjust($teocat-green, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .filters-card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    
+    .filters-title {
+      color: $teocat-brown;
+      font-weight: 600;
+    }
+    
+    .filter-subtitle {
+      color: $teocat-brown;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    
+    .category-filters {
+      .category-filter-item {
+        padding: 0.5rem 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 0.25rem;
+        margin-bottom: 0.25rem;
+        
+        &:hover {
+          background-color: #f8f9fa;
+          padding-left: 0.5rem;
+        }
+        
+        &.active {
+          color: $teocat-green;
+          font-weight: 600;
+          background-color: rgba($teocat-green, 0.1);
+          padding-left: 0.5rem;
+        }
+      }
+    }
+    
+    .price-range-container {
+      padding: 0 0.5rem;
+    }
+    
+    .price-range {
+      &::-webkit-slider-thumb {
+        background: $teocat-green;
+      }
+      
+      &::-moz-range-thumb {
+        background: $teocat-green;
+      }
+      
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    
+    .rating-filters {
+      .rating-filter-item {
+        padding: 0.5rem 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 0.25rem;
+        margin-bottom: 0.25rem;
+        
+        &:hover {
+          background-color: #f8f9fa;
+          padding-left: 0.5rem;
+        }
+        
+        &.active {
+          color: $teocat-brown;
+          font-weight: 600;
+          background-color: rgba($teocat-green, 0.1);
+          padding-left: 0.5rem;
+        }
+      }
+    }
+    
+    .availability-filter {
+      .form-check-input {
+        &:checked {
+          background-color: $teocat-green;
+          border-color: $teocat-green;
+        }
+        
+        &:focus {
+          border-color: $teocat-green;
+          box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+        }
+      }
+    }
+    
+    .sort-select {
+      &:focus {
+        border-color: $teocat-green;
+        box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+      }
+    }
+  }
+
+  .results-header {
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .results-count {
+    color: $teocat-brown;
+    font-weight: 500;
+  }
+  
+  .sort-select-inline {
+    width: auto;
+    min-width: 200px;
+    
+    &:focus {
+      border-color: $teocat-green;
+      box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+    }
+  }
+
+  .product-item-container {
+    height: 100%;
+    display: flex;
+    
+    // Ocultar el "0" que aparece en algunas tarjetas
+    > :first-child:not(.product-card) {
+      display: none;
+    }
+    
+    // Asegurar que la tarjeta ocupe todo el espacio disponible
+    .product-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .pagination-container {
+    .pagination {
+      .page-item {
+        .page-link {
+          color: $teocat-brown;
+          
+          &:focus {
+            box-shadow: 0 0 0 0.25rem rgba(122, 181, 29, 0.25);
+          }
+        }
+        
+        &.active .page-link {
+          background-color: $teocat-green;
+          border-color: $teocat-green;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .loading-container {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .no-results-container {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+// Responsive
+@media (max-width: 991.98px) {
+  .catalogo-page {
+    .filters-column {
+      display: none;
+      
+      &.show {
+        display: block;
+      }
+    }
+  }
+}
+

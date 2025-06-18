@@ -1,0 +1,124 @@
+/* Estilos personalizados para ReactToastify */
+.Toastify__toast-container {
+  width: 320px;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: inherit;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.Toastify__toast-body {
+  padding: 0 8px;
+}
+
+.Toastify__toast-body > div > strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.Toastify__toast-body > div > p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.Toastify__toast--success {
+  background-color: #ebf9f1;
+  color: #0a6634;
+  border-left: 4px solid #0a6634;
+}
+
+.Toastify__toast--error {
+  background-color: #fdf3f3;
+  color: #d32f2f;
+  border-left: 4px solid #d32f2f;
+}
+
+.Toastify__toast--info {
+  background-color: #e8f4fd;
+  color: #0288d1;
+  border-left: 4px solid #0288d1;
+}
+
+.Toastify__toast--warning {
+  background-color: #fff8e6;
+  color: #ed6c02;
+  border-left: 4px solid #ed6c02;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+}
+
+.Toastify__progress-bar--success {
+  background-color: #0a6634;
+}
+
+.Toastify__progress-bar--error {
+  background-color: #d32f2f;
+}
+
+.Toastify__progress-bar--info {
+  background-color: #0288d1;
+}
+
+.Toastify__progress-bar--warning {
+  background-color: #ed6c02;
+}
+
+.Toastify__close-button {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* Asegurarse de que el botón de cierre sea visible y funcione */
+.Toastify__close-button > svg {
+  fill: currentColor;
+  height: 16px;
+  width: 16px;
+}
+
+/* Styles for react-toastify notifications */
+.Toastify__toast-container {
+  z-index: 9999; /* Ensure toasts are on top of everything */
+  width: fit-content;
+}
+
+.Toastify__toast {
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+}
+
+.Toastify__toast--success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.Toastify__toast--error {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(to right, #0d6efd, #17a2b8); /* Example gradient */
+}
+
+
