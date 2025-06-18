@@ -90,7 +90,8 @@ const TeoCatHeroSection = () => {
           <SwiperSlide key={slide.id}>
             <div className="teocat-hero__slide">
               <div className="teocat-hero__image-container">
-                <img src={slide.image || "/placeholder.svg"} alt={slide.title} className="teocat-hero__image" />
+                <img src={slide.image || "//vite.svg
+"} alt={slide.title} className="teocat-hero__image" />
                 {/* Overlay gradient inspired by EPM design */}
                 <div className="teocat-hero__overlay"></div>
               </div>

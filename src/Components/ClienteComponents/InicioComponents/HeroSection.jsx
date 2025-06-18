@@ -89,7 +89,8 @@ const HeroSection = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="hero-slide">
-              <img src={slide.image || "/placeholder.svg"} alt={slide.title} className="hero-image" />
+              <img src={slide.image || "//vite.svg
+"} alt={slide.title} className="hero-image" />
               <div className="hero-content">
                 <Container>
                   <motion.div

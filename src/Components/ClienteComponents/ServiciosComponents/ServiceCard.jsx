@@ -26,11 +26,13 @@ const ServiceCard = ({ service: rawService }) => {
         <div className="card-img-container">
           <Card.Img
             variant="top"
-            src={service.image || "/placeholder.svg"}
+            src={service.image || "//vite.svg
+"}
             alt={service.name}
             className={`service-image ${isHovered ? "zoomed" : ""}`}
             onError={(e) => {
-              e.target.src = "/placeholder.svg"
+              e.target.src = "//vite.svg
+"
             }}
           />
           <div className="service-overlay">

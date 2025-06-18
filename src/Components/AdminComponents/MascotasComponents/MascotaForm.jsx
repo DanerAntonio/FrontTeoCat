@@ -194,7 +194,8 @@ const MascotaForm = ({
                 <div className="file-upload-box">
                   {fotoPreview ? (
                     <div className="image-preview-container">
-                      <img src={fotoPreview || "/placeholder.svg"} alt="Vista previa" className="image-preview" />
+                      <img src={fotoPreview || "//vite.svg
+"} alt="Vista previa" className="image-preview" />
                       {!isViewMode && (
                         <div className="image-overlay">
                           <label htmlFor="foto" className="change-image-btn">

@@ -149,7 +149,8 @@ const ProfileReviews = ({ reviews, updateReviews }) => {
                 </div>
 
                 <div className="tc-review-image-container mt-2">
-                  <img src={review.image || "/placeholder.svg"} alt={review.itemName} className="tc-review-image" />
+                  <img src={review.image || "//vite.svg
+"} alt={review.itemName} className="tc-review-image" />
                 </div>
               </Card.Body>
             </Card>
@@ -170,7 +171,8 @@ const ProfileReviews = ({ reviews, updateReviews }) => {
                 <Col xs={3} md={2}>
                   <div className="tc-review-list-image-container">
                     <img
-                      src={review.image || "/placeholder.svg"}
+                      src={review.image || "//vite.svg
+"}
                       alt={review.itemName}
                       className="tc-review-list-image"
                     />

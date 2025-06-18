@@ -29,7 +29,8 @@ const ImagesSection = ({ imagenes, imagenesPreview, formErrors, onImageUpload, o
               {imagenesPreview[index] ? (
                 <>
                   <img
-                    src={imagenesPreview[index] || "/placeholder.svg"}
+                    src={imagenesPreview[index] || "//vite.svg
+"}
                     alt={`Imagen ${index + 1}`}
                     className="img-fluid"
                     style={{ maxHeight: "100px", maxWidth: "100%" }}

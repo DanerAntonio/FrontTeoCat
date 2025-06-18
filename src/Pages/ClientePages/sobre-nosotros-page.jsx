@@ -83,7 +83,8 @@ const SobreNosotrosPage = () => {
                   {historiaImagenes.map((imagen, index) => (
                     <Carousel.Item key={index}>
                       <img
-                        src={imagen || "/placeholder.svg"}
+                        src={imagen || "//vite.svg
+"}
                         alt={`Historia de Teo/Cat ${index + 1}`}
                         className="tc-historia-image"
                       />

@@ -94,7 +94,8 @@ const TestimonialsSection = ({ testimonials, isVisible, sectionName }) => {
                   </div>
                   <div className="testimonial-user">
                     <div className="user-avatar">
-                      <img src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
+                      <img src={testimonial.avatar || "//vite.svg
+"} alt={testimonial.name} />
                     </div>
                     <div className="user-info">
                       <h4>{testimonial.name}</h4>

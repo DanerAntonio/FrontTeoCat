@@ -8,7 +8,8 @@ const ServiceCard = ({ service, addService, isSelected, viewMode = "grid" }) => 
       <Card className={`service-card mb-2 ${isSelected ? "selected" : ""}`}>
         <div className="d-flex">
           <div className="service-card-img-container" style={{ width: "120px" }}>
-            <img src={service.image || "/placeholder.svg"} alt={service.name} className="service-card-img" />
+            <img src={service.image || "//vite.svg
+"} alt={service.name} className="service-card-img" />
             {isSelected && (
               <div className="service-selected-badge">
                 <i className="bi bi-check"></i>

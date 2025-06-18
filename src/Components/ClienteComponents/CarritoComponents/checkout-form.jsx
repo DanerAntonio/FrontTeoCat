@@ -731,7 +731,8 @@ const CheckoutForm = ({ onPlaceOrder, subtotal, iva, shipping, discount, total }
             </p>
             <div className="border rounded p-2 text-center">
               <img
-                src={comprobanteUrl || "/placeholder.svg"}
+                src={comprobanteUrl || "//vite.svg
+"}
                 alt="Vista previa del comprobante"
                 className="img-fluid"
                 style={{ maxHeight: "200px" }}

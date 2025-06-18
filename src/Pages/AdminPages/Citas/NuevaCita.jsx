@@ -149,7 +149,8 @@ const NuevaCita = () => {
             precio: servicio.Precio,
             multiplesMascotas: servicio.Que_incluye?.toLowerCase().includes("múltiples") || false,
             tipoServicioId: servicio.IdTipoServicio,
-            imagen: servicio.Foto || "/placeholder.svg?height=200&width=200",
+            imagen: servicio.Foto || "//vite.svg
+?height=200&width=200",
           })),
         )
 
@@ -169,7 +170,8 @@ const NuevaCita = () => {
                 apellido: cliente.Apellido,
                 telefono: cliente.Telefono,
                 correo: cliente.Correo,
-                foto: cliente.Foto || "/placeholder.svg?height=100&width=100",
+                foto: cliente.Foto || "//vite.svg
+?height=100&width=100",
                 mascotas: mascotas.map((mascota) => ({
                   id: mascota.IdMascota,
                   nombre: mascota.Nombre,
@@ -178,7 +180,8 @@ const NuevaCita = () => {
                   tamaño: mascota.Tamaño,
                   pelaje: mascota.Pelaje,
                   fechaNacimiento: mascota.FechaNacimiento,
-                  foto: mascota.Foto || "/placeholder.svg?height=200&width=200",
+                  foto: mascota.Foto || "//vite.svg
+?height=200&width=200",
                 })),
               }
             } catch (error) {
@@ -228,7 +231,8 @@ const NuevaCita = () => {
                         precio: servicio.Precio,
                         multiplesMascotas: servicio.Que_incluye?.toLowerCase().includes("múltiples") || false,
                         tipoServicioId: servicio.IdTipoServicio,
-                        imagen: servicio.Foto || "/placeholder.svg?height=200&width=200",
+                        imagen: servicio.Foto || "//vite.svg
+?height=200&width=200",
                       }
                     }
                     return null

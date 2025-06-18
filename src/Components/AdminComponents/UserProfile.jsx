@@ -445,7 +445,8 @@ const UserProfile = () => {
           <div className="avatar">
             {profilePhoto && !imageError ? (
               <img
-                src={profilePhoto || "/placeholder.svg"}
+                src={profilePhoto || "//vite.svg
+"}
                 alt="Avatar"
                 className="user-avatar-img"
                 onError={handleImageError}
@@ -494,7 +495,8 @@ const UserProfile = () => {
                   <div className="header-avatar">
                     {profilePhoto && !imageError ? (
                       <img
-                        src={profilePhoto || "/placeholder.svg"}
+                        src={profilePhoto || "//vite.svg
+"}
                         alt="Avatar"
                         className="header-avatar-img"
                         onError={handleImageError}

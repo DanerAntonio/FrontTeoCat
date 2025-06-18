@@ -109,7 +109,8 @@ const ProfileSidebar = ({ user, activeTab, setActiveTab, updateUser }) => {
             <div className="tc-profile-image-container" onClick={handleImageClick}>
               {getProfileImageUrl() ? (
                 <img
-                  src={getProfileImageUrl() || "/placeholder.svg"}
+                  src={getProfileImageUrl() || "//vite.svg
+"}
                   alt={`${user.nombre} ${user.apellido}`}
                   className="tc-profile-image"
                   onError={(e) => {

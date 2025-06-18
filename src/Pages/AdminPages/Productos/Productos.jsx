@@ -215,7 +215,8 @@ const Productos = () => {
     const fotosString = product.FotosProducto || product.Foto || ""
 
     if (!fotosString) {
-      return "/placeholder.svg?height=200&width=200&text=Sin+imagen"
+      return "//vite.svg
+?height=200&width=200&text=Sin+imagen"
     }
 
     // Si es una cadena con múltiples URLs separadas por |
@@ -224,11 +225,13 @@ const Productos = () => {
         .split("|")
         .map((url) => url.trim())
         .filter((url) => url)
-      return urls.length > 0 ? urls[0] : "/placeholder.svg?height=200&width=200&text=Sin+imagen"
+      return urls.length > 0 ? urls[0] : "//vite.svg
+?height=200&width=200&text=Sin+imagen"
     }
 
     // Si es una sola URL
-    return fotosString || "/placeholder.svg?height=200&width=200&text=Sin+imagen"
+    return fotosString || "//vite.svg
+?height=200&width=200&text=Sin+imagen"
   }
 
   // Definición de columnas para la tabla
@@ -574,7 +577,8 @@ const Productos = () => {
                 <div className="col-md-6">
                   <div className="text-center">
                     <img
-                      src={getProductImage(formData) || "/placeholder.svg"}
+                      src={getProductImage(formData) || "//vite.svg
+"}
                       alt={formData.NombreProducto || "Producto"}
                       className="img-fluid rounded shadow"
                       style={{
@@ -585,7 +589,8 @@ const Productos = () => {
                       }}
                       onError={(e) => {
                         e.target.onerror = null
-                        e.target.src = "/placeholder.svg?height=250&width=250&text=Imagen+no+disponible"
+                        e.target.src = "//vite.svg
+?height=250&width=250&text=Imagen+no+disponible"
                       }}
                     />
                     <p className="text-muted small mt-2">Imagen del producto</p>

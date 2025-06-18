@@ -99,7 +99,8 @@ const TeoCatTestimonialsSection = ({ testimonials, isVisible, sectionName }) => 
                   </div>
                   <div className="teocat-testimonials__user">
                     <div className="teocat-testimonials__avatar">
-                      <img src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
+                      <img src={testimonial.avatar || "//vite.svg
+"} alt={testimonial.name} />
                     </div>
                     <div className="teocat-testimonials__user-info">
                       <h4>{testimonial.name}</h4>

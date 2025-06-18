@@ -389,7 +389,8 @@ export const formatearServicio = (servicio) => {
     ? servicio.Foto.split("|")
         .map((url) => url.trim())
         .filter((url) => url)
-    : ["/placeholder.svg"]
+    : ["//vite.svg
+"]
 
   // Procesar beneficios
   const beneficios = servicio.Beneficios ? servicio.Beneficios.split(", ").filter((b) => b.trim()) : []

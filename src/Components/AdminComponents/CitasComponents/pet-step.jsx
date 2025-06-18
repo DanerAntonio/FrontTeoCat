@@ -83,7 +83,8 @@ export const PetStep = ({
                 >
                   <div className="mascota-image">
                     {mascota.foto ? (
-                      <img src={mascota.foto || "/placeholder.svg"} alt={mascota.nombre} />
+                      <img src={mascota.foto || "//vite.svg
+"} alt={mascota.nombre} />
                     ) : (
                       <div className="mascota-placeholder">
                         <PawPrint size={24} />

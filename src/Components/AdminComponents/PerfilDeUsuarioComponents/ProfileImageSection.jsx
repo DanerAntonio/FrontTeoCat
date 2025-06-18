@@ -55,7 +55,8 @@ const ProfileImageSection = ({
           }}
         >
           <img
-            src={getImageUrl() || "/placeholder.svg"}
+            src={getImageUrl() || "//vite.svg
+"}
             alt="Foto de perfil"
             className="img-fluid rounded-circle border"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}

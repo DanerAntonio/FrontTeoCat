@@ -128,7 +128,8 @@ const NotificationRow = ({ notificacion, onChangeStatus }) => {
         <div className="d-flex gap-3">
           <div style={{ width: "48px", height: "48px" }} className="flex-shrink-0">
             <img
-              src={producto.imagen || "/placeholder.svg?height=200&width=200"}
+              src={producto.imagen || "//vite.svg
+?height=200&width=200"}
               alt={producto.nombre}
               className="img-fluid rounded"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -165,7 +166,8 @@ const NotificationRow = ({ notificacion, onChangeStatus }) => {
         <div className="d-flex gap-3">
           <div style={{ width: "48px", height: "48px" }} className="flex-shrink-0">
             <img
-              src={producto.imagen || "/placeholder.svg?height=200&width=200"}
+              src={producto.imagen || "//vite.svg
+?height=200&width=200"}
               alt={producto.nombre}
               className="img-fluid rounded"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -189,7 +191,8 @@ const NotificationRow = ({ notificacion, onChangeStatus }) => {
         <div className="d-flex gap-3">
           <div style={{ width: "48px", height: "48px" }} className="flex-shrink-0">
             <img
-              src={producto.imagen || "/placeholder.svg?height=200&width=200"}
+              src={producto.imagen || "//vite.svg
+?height=200&width=200"}
               alt={producto.nombre}
               className="img-fluid rounded"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}

@@ -1038,7 +1038,8 @@ const AgendarCitas = () => {
                           <div className="mascota-image">
                             {currentCita.mascota.foto ? (
                               <img
-                                src={currentCita.mascota.foto || "/placeholder.svg"}
+                                src={currentCita.mascota.foto || "//vite.svg
+"}
                                 alt={currentCita.mascota.nombre}
                                 className="img-fluid rounded"
                               />

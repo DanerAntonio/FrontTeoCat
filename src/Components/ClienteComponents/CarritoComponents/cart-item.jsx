@@ -12,21 +12,24 @@ const CartItem = ({ item, updateQuantity, removeItem }) => {
   const handleImageError = (e) => {
     if (!imageError) {
       setImageError(true)
-      e.target.src = "/placeholder.svg?height=60&width=60&text=Producto"
+      e.target.src = "//vite.svg
+?height=60&width=60&text=Producto"
     }
   }
 
   // ✅ FUNCIÓN PARA OBTENER URL DE IMAGEN SEGURA
   const getImageUrl = (imageUrl) => {
     if (!imageUrl || imageError) {
-      return "/placeholder.svg?height=60&width=60&text=Producto"
+      return "//vite.svg
+?height=60&width=60&text=Producto"
     }
 
     // Si es una URL de Cloudinary, verificar que esté bien formada
     if (imageUrl.includes("cloudinary.com")) {
       // Verificar que la URL tenga el formato correcto
       if (!imageUrl.includes("/image/upload/")) {
-        return "/placeholder.svg?height=60&width=60&text=Producto"
+        return "//vite.svg
+?height=60&width=60&text=Producto"
       }
     }
 
@@ -45,7 +48,8 @@ const CartItem = ({ item, updateQuantity, removeItem }) => {
         <div className="d-flex align-items-center">
           <div className="cart-item-image me-3">
             <img
-              src={getImageUrl(item.image) || "/placeholder.svg"}
+              src={getImageUrl(item.image) || "//vite.svg
+"}
               alt={item.name || "Producto"}
               className="img-fluid rounded"
               onError={handleImageError}

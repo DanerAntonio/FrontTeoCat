@@ -333,7 +333,8 @@ const ProductoDetallePage = () => {
             <div className="product-gallery">
               <div className="main-image-container mb-3">
                 <img
-                  src={product.images[selectedImage] || "/placeholder.svg"}
+                  src={product.images[selectedImage] || "//vite.svg
+"}
                   alt={product.name}
                   className="main-image img-fluid rounded"
                 />
@@ -348,7 +349,8 @@ const ProductoDetallePage = () => {
                       onClick={() => handleThumbnailClick(index)}
                     >
                       <img
-                        src={image || "/placeholder.svg"}
+                        src={image || "//vite.svg
+"}
                         alt={`${product.name} - Vista ${index + 1}`}
                         className="thumbnail-image img-fluid rounded"
                       />
@@ -609,7 +611,8 @@ const ProductoDetallePage = () => {
                                     {review.images.map((image, imgIndex) => (
                                       <div key={imgIndex} className="col-3">
                                         <img
-                                          src={image || "/placeholder.svg"}
+                                          src={image || "//vite.svg
+"}
                                           alt={`Reseña imagen ${imgIndex + 1}`}
                                           className="img-fluid rounded"
                                           style={{ height: "80px", objectFit: "cover" }}
@@ -693,7 +696,8 @@ const ProductoDetallePage = () => {
                                       {imagesPreviews[index] ? (
                                         <div className="position-relative">
                                           <img
-                                            src={imagesPreviews[index] || "/placeholder.svg"}
+                                            src={imagesPreviews[index] || "//vite.svg
+"}
                                             alt={`Vista previa ${index + 1}`}
                                             className="img-fluid rounded"
                                             style={{ height: "100px", width: "100%", objectFit: "cover" }}
@@ -768,7 +772,8 @@ const ProductoDetallePage = () => {
                     <Link to={`/producto/${relatedProduct.id}`} className="text-decoration-none">
                       <div className="position-relative">
                         <img
-                          src={relatedProduct.image || "/placeholder.svg"}
+                          src={relatedProduct.image || "//vite.svg
+"}
                           alt={relatedProduct.name}
                           className="card-img-top related-product-image"
                         />

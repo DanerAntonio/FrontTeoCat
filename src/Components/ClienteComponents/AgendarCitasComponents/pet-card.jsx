@@ -8,7 +8,8 @@ const PetCard = ({ pet, isSelected, onClick, allowMultiSelect = false }) => {
       <Card.Body className="d-flex align-items-center p-3">
         <div className="pet-avatar me-3">
           {pet.imagen ? (
-            <img src={pet.imagen || "/placeholder.svg"} alt={pet.nombre} className="pet-image" />
+            <img src={pet.imagen || "//vite.svg
+"} alt={pet.nombre} className="pet-image" />
           ) : (
             <i className="bi bi-paw-fill fs-3"></i>
           )}

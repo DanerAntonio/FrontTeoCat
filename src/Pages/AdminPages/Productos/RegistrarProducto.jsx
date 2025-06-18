@@ -972,7 +972,8 @@ if (creatingVariant) {
                                 <td style={{ width: "80px" }}>
                                   {variante.FotosProducto && variante.FotosProducto.length > 0 ? (
                                     <img
-                                      src={variante.FotosProducto[0].url || "/placeholder.svg"}
+                                      src={variante.FotosProducto[0].url || "//vite.svg
+"}
                                       alt={variante.NombreProducto}
                                       className="img-thumbnail"
                                       style={{ width: "60px", height: "60px", objectFit: "cover" }}

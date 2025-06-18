@@ -141,7 +141,8 @@ const CatalogoService = {
       price: Number.parseFloat(producto.Precio) || 0,
       rating: 4.5, // Valor por defecto ya que no viene en la API
       stock: producto.Stock || 0,
-      image: producto.FotosProducto || "/placeholder.svg",
+      image: producto.FotosProducto || "//vite.svg
+",
       description: producto.Descripcion || "",
       barcode: producto.CodigoBarras,
       reference: producto.Referencia,
@@ -220,7 +221,8 @@ const CatalogoService = {
           "Unidad de medida": producto.UnidadMedida || "N/A",
           // ❌ CAMPOS REMOVIDOS: Origen, Stock, Stock disponible
         },
-        images: producto.FotosProducto ? [producto.FotosProducto] : ["/placeholder.svg"],
+        images: producto.FotosProducto ? [producto.FotosProducto] : ["//vite.svg
+"],
         reviews: [], // Por ahora vacío, se puede implementar después
       }
     } catch (error) {

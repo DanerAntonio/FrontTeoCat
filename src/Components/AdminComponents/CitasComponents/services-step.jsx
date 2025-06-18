@@ -75,7 +75,8 @@ export const ServicesStep = ({ servicios, selectedServicios, onServiciosChange, 
                 onClick={() => handleSelectServicio(servicio)}
               >
                 <div className="servicio-image">
-                  <img src={servicio.imagen || "/placeholder.svg?height=200&width=200"} alt={servicio.nombre} />
+                  <img src={servicio.imagen || "//vite.svg
+?height=200&width=200"} alt={servicio.nombre} />
                 </div>
                 <div className="servicio-info">
                   <h5>{servicio.nombre}</h5>

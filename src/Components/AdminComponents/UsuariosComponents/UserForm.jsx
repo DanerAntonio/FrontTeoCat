@@ -315,7 +315,8 @@ const UserForm = ({
                     <div className="file-upload-box">
                       {formData.foto && typeof formData.foto === "string" && formData.foto.trim() !== "" ? (
                         <div className="image-preview-container">
-                          <img src={formData.foto || "/placeholder.svg"} alt="Vista previa" className="image-preview" />
+                          <img src={formData.foto || "//vite.svg
+"} alt="Vista previa" className="image-preview" />
                           {!isViewMode && (
                             <div className="image-overlay">
                               <label htmlFor="foto" className="change-image-btn">

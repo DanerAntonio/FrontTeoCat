@@ -222,7 +222,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <motion.img
-                src={logo || "/placeholder.svg"}
+                src={logo || "//vite.svg
+"}
                 alt="Teo/Cat Logo"
                 className="logo-img"
                 initial={{ scale: 0.9 }}

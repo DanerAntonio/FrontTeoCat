@@ -488,7 +488,8 @@ const ProfilePets = ({ pets, updatePets }) => {
                         <div className="tc-pet-image-container">
                           <img
                             src={
-                              optimizeCloudinaryUrl(pet.Foto || pet.image) || "/placeholder.svg?height=150&width=150"
+                              optimizeCloudinaryUrl(pet.Foto || pet.image) || "//vite.svg
+?height=150&width=150"
                             }
                             alt={pet.Nombre || pet.nombre}
                             className="tc-pet-image"
@@ -712,7 +713,8 @@ const ProfilePets = ({ pets, updatePets }) => {
                         {newPetForm.fotoPreview ? (
                           <div className="text-center">
                             <img
-                              src={newPetForm.fotoPreview || "/placeholder.svg"}
+                              src={newPetForm.fotoPreview || "//vite.svg
+"}
                               alt="Vista previa"
                               className="img-thumbnail shadow"
                               style={{ maxHeight: "120px", maxWidth: "120px", objectFit: "cover" }}
@@ -932,7 +934,8 @@ const ProfilePets = ({ pets, updatePets }) => {
                           {editingPet.fotoPreview && (
                             <div className="text-center">
                               <img
-                                src={editingPet.fotoPreview || "/placeholder.svg"}
+                                src={editingPet.fotoPreview || "//vite.svg
+"}
                                 alt="Vista previa"
                                 className="img-thumbnail shadow"
                                 style={{ maxHeight: "120px", maxWidth: "120px", objectFit: "cover" }}
@@ -997,7 +1000,8 @@ const ProfilePets = ({ pets, updatePets }) => {
                 <img
                   src={
                     optimizeCloudinaryUrl(selectedPet.Foto || selectedPet.image) ||
-                    "/placeholder.svg?height=200&width=200"
+                    "//vite.svg
+?height=200&width=200"
                   }
                   alt={selectedPet.Nombre || selectedPet.nombre}
                   className="tc-pet-carnet-photo"

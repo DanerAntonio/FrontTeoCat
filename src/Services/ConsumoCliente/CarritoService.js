@@ -283,7 +283,8 @@ class CarritoService {
       const id = producto.IdProducto ?? producto.id
       const name = producto.NombreProducto ?? producto.name ?? "Producto sin nombre"
       const price = Number(producto.PrecioVenta ?? producto.price ?? 0)
-      const image = producto.Foto ?? producto.image ?? "/placeholder.svg?height=60&width=60&text=Producto"
+      const image = producto.Foto ?? producto.image ?? "//vite.svg
+?height=60&width=60&text=Producto"
       const category = producto.CategoriaNombre ?? producto.category ?? ""
       const stock = Number(producto.Stock ?? producto.stock ?? 0)
 

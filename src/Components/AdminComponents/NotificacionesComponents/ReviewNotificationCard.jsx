@@ -151,7 +151,8 @@ const ReviewNotificationCard = ({ notificacion, onChangeStatus }) => {
         <div className="d-flex gap-3 mb-3">
           <div style={{ width: "64px", height: "64px" }} className="flex-shrink-0">
             <img
-              src={producto.imagen || "/placeholder.svg?height=200&width=200"}
+              src={producto.imagen || "//vite.svg
+?height=200&width=200"}
               alt={producto.nombre}
               className="img-fluid rounded"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}

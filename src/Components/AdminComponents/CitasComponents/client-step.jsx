@@ -73,7 +73,8 @@ export const ClientStep = ({
                 >
                   <div className="cliente-avatar">
                     {cliente.foto ? (
-                      <img src={cliente.foto || "/placeholder.svg?height=100&width=100"} alt={cliente.nombre} />
+                      <img src={cliente.foto || "//vite.svg
+?height=100&width=100"} alt={cliente.nombre} />
                     ) : (
                       <User size={24} />
                     )}

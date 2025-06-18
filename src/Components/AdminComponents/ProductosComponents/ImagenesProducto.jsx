@@ -287,7 +287,8 @@ const ImagenesProducto = ({
                   <div className={`card h-100 ${image.principal ? 'border-primary' : ''}`}>
                     <div className="position-relative">
                       <img
-                        src={image.url || "/placeholder.svg"}
+                        src={image.url || "//vite.svg
+"}
                         alt={image.nombre || `Imagen ${index + 1}`}
                         className="card-img-top"
                         style={{ height: '150px', objectFit: 'cover' }}
