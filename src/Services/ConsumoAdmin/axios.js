@@ -1,13 +1,14 @@
-import axios from "axios"
+import axios from "axios";
 
-// Crear una instancia de axios con la URL base
+// Crear una instancia de axios con la URL base desde variable de entorno
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
   },
-})
+});
+
 
 // Interceptor para añadir el token a las peticiones
 axiosInstance.interceptors.request.use(
