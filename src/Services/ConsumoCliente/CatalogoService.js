@@ -221,8 +221,8 @@ const CatalogoService = {
           "Unidad de medida": producto.UnidadMedida || "N/A",
           // ❌ CAMPOS REMOVIDOS: Origen, Stock, Stock disponible
         },
-        images: producto.FotosProducto ? [producto.FotosProducto] : ["//vite.svg
-"],
+        images: producto.FotosProducto ? [producto.FotosProducto] : ["//vite.svg"],
+
         reviews: [], // Por ahora vacío, se puede implementar después
       }
     } catch (error) {

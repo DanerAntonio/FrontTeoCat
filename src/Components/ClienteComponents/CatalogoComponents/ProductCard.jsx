@@ -49,8 +49,8 @@ const ProductCard = ({ product, onAddToCart }) => {
           <div className="card-img-container">
             <Card.Img
               variant="top"
-              src={product.image || "//vite.svg
-"}
+              src={product.image || "//vite.svg"}
+
               alt={product.name}
               className={`product-image ${isHovered ? "zoomed" : ""}`}
             />

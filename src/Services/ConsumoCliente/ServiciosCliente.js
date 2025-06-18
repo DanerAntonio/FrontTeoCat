@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
-import axiosInstance from "../ConsumoAdmin/axios"
+import axiosInstance from "../ConsumoAdmin/axios.js"
 
 /**
  * Servicio integrado para el catálogo público de servicios
@@ -389,8 +389,8 @@ export const formatearServicio = (servicio) => {
     ? servicio.Foto.split("|")
         .map((url) => url.trim())
         .filter((url) => url)
-    : ["//vite.svg
-"]
+    : ["//vite.svg"]
+
 
   // Procesar beneficios
   const beneficios = servicio.Beneficios ? servicio.Beneficios.split(", ").filter((b) => b.trim()) : []
